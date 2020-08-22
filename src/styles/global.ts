@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -56,12 +56,12 @@ export default createGlobalStyle`
   }
 
   body,
-input,
-button,
-textarea {
-  font: 500 1.6rem ${props => props.theme.font.family};
-  color: ${props => props.theme.colors.text};
-}
+  input,
+  button,
+  textarea {
+    font: 500 1.6rem ${props => props.theme.font.family};
+    color: ${props => props.theme.colors.text};
+  }
 
   button {
     cursor: pointer;

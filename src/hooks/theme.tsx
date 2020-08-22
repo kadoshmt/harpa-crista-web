@@ -13,7 +13,7 @@ import {
   DefaultTheme,
 } from 'styled-components';
 
-import { GlobalStyles, themes } from '../styles';
+import { themes, GlobalStyles } from '../styles';
 
 // import api from '../services/api';
 
@@ -22,24 +22,21 @@ interface ThemeOptions {
 }
 type Theme = [ThemeOptions, DefaultTheme];
 
-type Response<T> = [T, Dispatch<SetStateAction<T>>];
-
 interface ThemeContextData {
   theme: DefaultTheme;
   themeTitle?: string;
   toggleTheme(): void;
-  usePersistedState<T>(key: string, initialState: T): Response<T>;
 }
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 const ThemeProvider: React.FC = ({ children }) => {
-  const [themeMode, setThemeMode] = useState<string>(() => {
-    const theme = localStorage.getItem('@HarpaCrista:appTheme');
-    if (theme) {
-      return theme;
-    }
-    return 'light';
+  const [themeMode, setThemeMode] = useState<'light' | 'dark' | string>(() => {
+    const appTheme = localStorage.getItem('@HarpaCrista:appTheme');
+
+    if (!appTheme) return 'light';
+
+    return appTheme;
   });
 
   useEffect(() => {
@@ -47,44 +44,19 @@ const ThemeProvider: React.FC = ({ children }) => {
   }, [themeMode]);
 
   const toggleTheme = useCallback(() => {
-    setThemeMode(prevState => {
-      if (prevState === 'light') {
-        return 'dark';
-      }
-
-      return 'light';
-    });
+    setThemeMode(oldTheme => (oldTheme === 'light' ? 'dark' : 'light'));
   }, []);
 
   const theme = useMemo(() => {
-    return themes[themeMode];
+    return themes.light.title !== themeMode ? themes.dark : themes.light;
   }, [themeMode]);
-
-  function usePersistedState<T>(key: string, initialState: T): Response<T> {
-    const [appTheme, setAppTheme] = useState(() => {
-      const storageValue = localStorage.getItem(`@harpacrista:${key}`);
-
-      if (storageValue) {
-        return JSON.parse(storageValue);
-      }
-
-      return initialState;
-    });
-
-    useEffect(() => {
-      localStorage.setItem(`@harpacrista:${key}`, JSON.stringify(appTheme));
-    }, [key, appTheme]);
-
-    return [appTheme, setAppTheme];
-  }
 
   return (
     <ThemeContext.Provider
       value={{
         themeTitle: themeMode,
-        theme: themes[themeMode],
+        theme,
         toggleTheme,
-        usePersistedState,
       }}
     >
       <StyledThemeProvider theme={theme}>
