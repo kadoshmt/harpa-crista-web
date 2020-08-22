@@ -1,3 +1,10 @@
+import { DefaultTheme } from 'styled-components';
+
+interface DefinitionThemes {
+  light: DefaultTheme;
+  dark: DefaultTheme;
+}
+
 export default {
   light: {
     title: 'light',
@@ -69,4 +76,4 @@ export default {
       },
     },
   },
-};
+} as DefinitionThemes;
