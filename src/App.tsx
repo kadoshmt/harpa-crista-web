@@ -8,22 +8,21 @@ import Routes from './routes';
 import AppProvider from './hooks';
 import { ThemeProvider } from './hooks/theme';
 import Header from './components/Header';
-import usePersistedState from './hooks/usePersistedState';
+import { useTheme } from './hooks/theme';
 
 const App: React.FC = () => {
-  // const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+  const { usePersistedState } = useTheme();
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
 
   // const toggleTheme = (): void => {
   //   setTheme(theme.title === 'light' ? dark : light);
   // };
   return (
     <Router>
-      <ThemeProvider>
-        <AppProvider>
-          <Routes />
-        </AppProvider>
-        {/* <GlobalStyle /> */}
-      </ThemeProvider>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+      <GlobalStyle />
     </Router>
   );
 };

@@ -4,6 +4,9 @@ import React, {
   useState,
   useContext,
   useEffect,
+  Dispatch,
+  SetStateAction,
+  useMemo,
 } from 'react';
 import {
   ThemeProvider as StyledThemeProvider,
@@ -19,15 +22,18 @@ interface ThemeOptions {
 }
 type Theme = [ThemeOptions, DefaultTheme];
 
+type Response<T> = [T, Dispatch<SetStateAction<T>>];
+
 interface ThemeContextData {
   theme: DefaultTheme;
   themeTitle?: string;
   toggleTheme(): void;
+  usePersistedState<T>(key: string, initialState: T): Response<T>;
 }
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
-export const ThemeProvider: React.FC = ({ children }) => {
+const ThemeProvider: React.FC = ({ children }) => {
   const [themeMode, setThemeMode] = useState<string>(() => {
     const theme = localStorage.getItem('@HarpaCrista:appTheme');
     if (theme) {
@@ -45,23 +51,43 @@ export const ThemeProvider: React.FC = ({ children }) => {
       if (prevState === 'light') {
         return 'dark';
       }
+
       return 'light';
     });
   }, []);
 
-  const value = {
-    themeTitle: themeMode,
-    // @ts-ignore
-    theme: themes[themeMode],
-    toggleTheme,
-  };
+  const theme = useMemo(() => {
+    return themes[themeMode];
+  }, [themeMode]);
 
-  // @ts-ignore
-  const costumTheme = themes[themeMode];
+  function usePersistedState<T>(key: string, initialState: T): Response<T> {
+    const [appTheme, setAppTheme] = useState(() => {
+      const storageValue = localStorage.getItem(`@harpacrista:${key}`);
+
+      if (storageValue) {
+        return JSON.parse(storageValue);
+      }
+
+      return initialState;
+    });
+
+    useEffect(() => {
+      localStorage.setItem(`@harpacrista:${key}`, JSON.stringify(appTheme));
+    }, [key, appTheme]);
+
+    return [appTheme, setAppTheme];
+  }
 
   return (
-    <ThemeContext.Provider value={value}>
-      <StyledThemeProvider theme={costumTheme}>
+    <ThemeContext.Provider
+      value={{
+        themeTitle: themeMode,
+        theme: themes[themeMode],
+        toggleTheme,
+        usePersistedState,
+      }}
+    >
+      <StyledThemeProvider theme={theme}>
         {children}
         <GlobalStyles />
       </StyledThemeProvider>
@@ -69,7 +95,14 @@ export const ThemeProvider: React.FC = ({ children }) => {
   );
 };
 
-export function useTheme(): ThemeContextData {
+function useTheme(): ThemeContextData {
   const context = useContext(ThemeContext);
+
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+
   return context;
 }
+
+export { useTheme, ThemeProvider };
