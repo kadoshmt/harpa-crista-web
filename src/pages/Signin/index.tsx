@@ -1,7 +1,5 @@
-import React, { useRef, useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-
-import api from '../../services/api';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Container } from './styles';
 import { useAuth } from '../../hooks/auth';

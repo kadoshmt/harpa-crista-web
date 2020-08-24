@@ -1,4 +1,4 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -48,18 +48,42 @@ export default createGlobalStyle`
   }
 
   h1,h2,h3, h4, h5, h6, strong {
-    font-weight: 500;
+    font-weight: 500;    
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.6rem;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+
+  h4 {
+    font-size: 2rem;
   }
 
   #root {    
     margin: 0 auto;    
   }
 
+  html, body, #root {
+  height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  display: flex;  
+  justify-content: center;
+}
+
   body,
-input,
-button,
-textarea {
-  font: 500 1.6rem ${props => props.theme.font.family};
+  input,
+  button,
+  textarea {
+  font: 400 1.6rem ${props => props.theme.font.family};
   color: ${props => props.theme.colors.text};
 }
 

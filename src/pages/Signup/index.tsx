@@ -1,18 +1,17 @@
-import React, { useCallback, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container } from './styles';
-import api from '../../services/api';
 
-interface SignUpFormData {
-  name: string;
-  email: string;
-  password: string;
-}
+// interface SignUpFormData {
+//   name: string;
+//   email: string;
+//   password: string;
+// }
 
 const SignUp: React.FC = () => {
-  const history = useHistory();
+  // const history = useHistory();
 
-  const handleSubmit = useCallback(() => {}, []);
+  // const handleSubmit = useCallback(() => {}, []);
   return (
     <Container>
       <h1>Cadastrar</h1>

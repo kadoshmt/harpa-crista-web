@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import { useTheme } from '../../hooks/theme';
 // import { useAuth } from '../../hooks/auth';
 
-const Home: React.FC = () => {
+const Hino: React.FC = () => {
   // const history = useHistory();
   const { toggleTheme } = useTheme();
 
@@ -15,10 +15,10 @@ const Home: React.FC = () => {
     <Container>
       <Header toggleTheme={toggleTheme} />
       <HeaderContent>
-        <h1>Página Inicial</h1>
+        <h1>Hino</h1>
       </HeaderContent>
     </Container>
   );
 };
 
-export default Home;
+export default Hino;

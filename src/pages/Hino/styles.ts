@@ -10,7 +10,7 @@ export const HeaderContent = styled.div`
   width: 100%;
   margin: 0 auto;
   margin-top: 1.4rem;
-  padding: 2rem;
+  padding: 3rem;
 
   display: flex;
 

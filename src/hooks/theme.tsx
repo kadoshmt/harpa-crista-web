@@ -16,8 +16,8 @@ import { GlobalStyles, themes } from '../styles';
 
 interface ThemeOptions {
   [key: string]: 'light' | 'dark';
+  // [key: string]: ThemeOptions[keyof ThemeOptions];
 }
-type Theme = [ThemeOptions, DefaultTheme];
 
 interface ThemeContextData {
   theme: DefaultTheme;
@@ -55,7 +55,6 @@ export const ThemeProvider: React.FC = ({ children }) => {
     theme: themes[themeMode],
     toggleTheme,
   };
-
   // @ts-ignore
   const costumTheme = themes[themeMode];
 

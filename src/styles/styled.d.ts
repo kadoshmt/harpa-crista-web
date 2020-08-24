@@ -23,6 +23,8 @@ declare module 'styled-components' {
       headerActiveIcons: string;
       footerText: string;
       footerBackground: string;
+      lines: string;
+      mainContent: string;
     };
 
     font: {
