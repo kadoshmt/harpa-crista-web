@@ -33,7 +33,7 @@ export const MainContent = styled.main`
   }
 `;
 
-export const AuthorsContainer = styled.div`
+export const CategoriesContainer = styled.div`
   -webkit-column-count: 3; /* Chrome, Safari, Opera */
   -moz-column-count: 3; /* Firefox */
   column-count: 3; /* padrão */

@@ -30,6 +30,7 @@ const Autores: React.FC = () => {
       <Header menuItem="hinos" />
       <MainContent>
         <h1>Autores e Tradutores</h1>
+        <h3>Foram encontrados {authors && authors.length} autores.</h3>
         <AuthorsContainer>
           {authors.map((author: Author) => (
             <Link

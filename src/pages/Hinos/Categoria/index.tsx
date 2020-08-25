@@ -15,23 +15,22 @@ interface Hymn {
   slug: string;
 }
 
-interface Author {
+interface Category {
   id: number;
-  name: string;
+  title: string;
   slug: string;
-  initials: string;
   total_hymns: number;
   hymns: Hymn[];
 }
 
-const Autor: React.FC = () => {
-  const [author, setAuthor] = useState<Author>();
+const Categoria: React.FC = () => {
+  const [category, setCategory] = useState<Category>();
 
   const { id } = useParams();
 
   useEffect(() => {
-    api.get(`/hymns-authors/${id}`).then(response => {
-      setAuthor(response.data);
+    api.get(`/hymns-categories/${id}`).then(response => {
+      setCategory(response.data);
     });
   }, [id]);
 
@@ -40,23 +39,22 @@ const Autor: React.FC = () => {
       <Header menuItem="hinos" />
 
       <Helmet>
-        <title>{`Harpa Cristã | ${author && author.name}`}</title>
+        <title>{`Harpa Cristã | ${category && category.title}`}</title>
       </Helmet>
       <MainContent>
-        <h1>Hinos por Autores</h1>
+        <h1>Hinos por Categoria</h1>
 
-        <h2>
-          {author && author.name} - {author && author.initials}
-        </h2>
+        <h2>{category && category.title}</h2>
 
         <h3>
-          Este autor(a) compôs/traduziu {author && author.total_hymns} hinos.
+          Foram encontradas {category && category.total_hymns} hinos para esta
+          categoria.
         </h3>
 
-        {author && <HimnsList hymns={author.hymns} author={author.name} />}
+        {category && <HimnsList hymns={category.hymns} />}
       </MainContent>
     </Container>
   );
 };
 
-export default Autor;
+export default Categoria;
