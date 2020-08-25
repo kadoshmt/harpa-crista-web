@@ -19,11 +19,11 @@ import {
 } from './styles';
 
 interface Props {
-  toggleTheme(): void;
+  menuItem?: 'home' | 'hinos' | 'biblia';
 }
 
-const Header: React.FC<Props> = ({ toggleTheme }) => {
-  const { theme, themeTitle } = useTheme();
+const Header: React.FC<Props> = ({ menuItem }) => {
+  const { theme, themeTitle, toggleTheme } = useTheme();
   return (
     <Container>
       <HeaderContent>
@@ -39,19 +39,43 @@ const Header: React.FC<Props> = ({ toggleTheme }) => {
           <ul>
             <li>
               <Link to="/">
-                <FiHome color={theme.colors.primary} size={20} />
+                <FiHome
+                  color={
+                    menuItem === 'home'
+                      ? theme.colors.primary
+                      : theme.colors.headerIcons
+                  }
+                  size={20}
+                />
                 <span>Início</span>
               </Link>
             </li>
             <li>
               <Link to="biblia">
-                <FaBookOpen color={theme.colors.headerIcons} size={20} />
+                <FaBookOpen
+                  color={
+                    menuItem === 'biblia'
+                      ? theme.colors.primary
+                      : theme.colors.headerIcons
+                  }
+                  size={20}
+                />
                 <span>Bíblia</span>
               </Link>
             </li>
             <li>
-              <Link to="/hinos">
-                <FaMusic color={theme.colors.headerIcons} size={20} />
+              <Link
+                to="/hinos"
+                className={menuItem === 'hinos' ? 'activeMenu' : ''}
+              >
+                <FaMusic
+                  color={
+                    menuItem === 'hinos'
+                      ? theme.colors.primary
+                      : theme.colors.headerIcons
+                  }
+                  size={20}
+                />
                 <span>Hinos</span>
               </Link>
             </li>

@@ -46,4 +46,16 @@ export const Container = styled.div`
       }
     }
   }
+
+  @media (max-width: 1030px) {
+    a {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    a {
+      width: 100%;
+    }
+  }
 `;

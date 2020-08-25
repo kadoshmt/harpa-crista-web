@@ -43,8 +43,8 @@ export const MenuContainer = styled.div`
     list-style: none;
     display: flex;
 
-    li > a {
-      display: flex;      
+    li a {
+      display: flex;
       flex-direction: column;
       align-items: center;
       font-size: ${props => props.theme.font.sizes.md};
@@ -53,19 +53,21 @@ export const MenuContainer = styled.div`
       color: ${props => props.theme.colors.headerIcons};
 
       span {
-        display:block;
+        display: block;
         margin-top: 0.4rem;
+      }
+
+      &.activeMenu {
+        color: ${props => props.theme.colors.headerActiveIcons};
       }
 
       &:hover {
         color: ${props => props.theme.colors.headerActiveIcons};
       }
-      
-      }
     }
+  }
 
-    li + li {
-      margin-left: 20px;
-    }
+  li + li {
+    margin-left: 20px;
   }
 `;

@@ -1,8 +1,6 @@
-import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 
 import { Container } from './styles';
-import { useAuth } from '../../hooks/auth';
 
 interface SignInFormData {
   email: string;
@@ -10,10 +8,10 @@ interface SignInFormData {
 }
 
 const SignIn: React.FC = () => {
-  const { signIn } = useAuth();
-  const history = useHistory();
+  // const { signIn } = useAuth();
+  // const history = useHistory();
 
-  const handleSubmit = useCallback(() => {}, []);
+  // const handleSubmit = useCallback(() => {}, []);
   return (
     <Container>
       <h1>Autenticar</h1>

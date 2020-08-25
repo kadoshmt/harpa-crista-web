@@ -20,8 +20,6 @@ export const MainContent = styled.main`
   display: flex;
   flex-direction: column;
 
-  align-items: center;
-
   h1 {
     margin-bottom: 1.6rem;
     color: ${props => props.theme.colors.primary};
@@ -30,9 +28,16 @@ export const MainContent = styled.main`
     align-self: flex-start;
   }
 
+  h2 {
+    margin-top: 2rem;
+  }
+
   h3 {
     font-size: ${props => props.theme.font.sizes.md};
     font-weight: 400;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid ${props => props.theme.colors.lines};
+    padding-bottom: 1.5rem;
   }
 `;
 
@@ -45,30 +50,9 @@ export const HymnContainer = styled.div`
 
   justify-content: space-evenly;
   align-items: center;
-
-  a {
-    border: 2px solid ${props => props.theme.colors.lines};
-    border-radius: 50%;
-    padding: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > svg {
-      color: ${props => props.theme.colors.lines};
-    }
-
-    &:hover {
-      border: 2px solid ${props => props.theme.colors.primary};
-
-      > svg {
-        color: ${props => props.theme.colors.primary};
-      }
-    }
-  }
 `;
 
-export const HymnBody = styled.div`
+export const HymnsContainer = styled.div`
   -webkit-column-count: 2; /* Chrome, Safari, Opera */
   -moz-column-count: 2; /* Firefox */
   column-count: 2; /* padrão */
@@ -78,12 +62,12 @@ export const HymnBody = styled.div`
   margin: 0 auto;
   margin-top: 6rem;
 
-  p {
-    line-height: 2.5rem;
-    margin: 2rem 0;
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.colors.text};
 
-    &:first-child {
-      margin: 0;
+    &:hover {
+      color: ${props => props.theme.colors.primary};
     }
   }
 

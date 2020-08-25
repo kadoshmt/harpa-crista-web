@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
+import { Helmet } from 'react-helmet';
 import { Container, MainContent, HymnsPagination } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
-import { useTheme } from '../../hooks/theme';
+
 import HimnsList from '../../components/HimnsList';
 
 const Hinos: React.FC = () => {
   const [hymns, setHymns] = useState([]);
-  const { toggleTheme } = useTheme();
 
   const { page } = useParams();
 
@@ -29,7 +29,10 @@ const Hinos: React.FC = () => {
 
   return (
     <Container>
-      <Header toggleTheme={toggleTheme} />
+      <Helmet>
+        <title>Harpa Cristã | Hinos</title>
+      </Helmet>
+      <Header menuItem="hinos" />
       <MainContent>
         <h1>Hinos</h1>
         <HymnsPagination style={{ marginBottom: '6rem' }}>

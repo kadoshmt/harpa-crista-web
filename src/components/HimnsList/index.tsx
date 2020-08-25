@@ -12,14 +12,18 @@ interface Hymn {
   num_hymn: number;
   title: string;
   slug: string;
-  authors: Authors[];
+  authors?: Authors[];
 }
 
 interface Props {
   hymns: Hymn[];
+  author?: string;
 }
 
-const HimnsList: React.FC<Props> = ({ hymns }) => {
+const HimnsList: React.FC<Props> = ({
+  hymns,
+  author = 'Autor Desconhecido',
+}) => {
   // const { number, title, author, link }
   // const { theme, themeTitle } = useTheme();
   return (
@@ -31,9 +35,9 @@ const HimnsList: React.FC<Props> = ({ hymns }) => {
               <span>{String(hymn.num_hymn).padStart(3, '0')}</span>
               <span>
                 <strong>{hymn.title}</strong>
-                {hymn.authors.length > 0
+                {hymn.authors && hymn.authors.length > 0
                   ? hymn.authors[0].name
-                  : 'Autor Desconhecido'}
+                  : author}
               </span>
             </div>
           </Link>
