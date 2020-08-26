@@ -24,7 +24,8 @@ export const HeaderContent = styled.div`
 
 export const SearchContainer = styled.div`
   input {
-    width: 500px;
+    flex: 1;
+    min-width: 500px;
     height: 4rem;
 
     border-radius: 0.8rem;
@@ -35,6 +36,17 @@ export const SearchContainer = styled.div`
     font-size: ${props => props.theme.font.sizes.md};
     font-family: ${props => props.theme.font.family};
     font-weight: 300;
+  }
+  @media (max-width: 1030px) {
+    input {
+      min-width: 300px;
+    }
+  }
+
+  @media (max-width: 840px) {
+    input {
+      min-width: 200px;
+    }
   }
 `;
 

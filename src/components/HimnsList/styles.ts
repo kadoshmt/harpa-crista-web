@@ -58,4 +58,12 @@ export const Container = styled.div`
       width: 100%;
     }
   }
+
+  @media (max-width: 425px) {
+    a {
+      & + a {
+        border-top: 1px solid ${props => props.theme.colors.lines};
+      }
+    }
+  }
 `;

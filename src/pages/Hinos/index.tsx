@@ -7,6 +7,7 @@ import api from '../../services/api';
 import Header from '../../components/Header';
 
 import HimnsList from '../../components/HimnsList';
+import HymnsMenu from '../../components/HymnsMenu';
 
 const Hinos: React.FC = () => {
   const [hymns, setHymns] = useState([]);
@@ -35,6 +36,8 @@ const Hinos: React.FC = () => {
       <Header menuItem="hinos" />
       <MainContent>
         <h1>Hinos</h1>
+
+        <HymnsMenu />
         <HymnsPagination style={{ marginBottom: '6rem' }}>
           <ul>
             <li>

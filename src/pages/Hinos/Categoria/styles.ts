@@ -15,7 +15,7 @@ export const MainContent = styled.main`
   background: ${props => props.theme.colors.mainContent};
   border: 1px solid ${props => props.theme.colors.lines};
   border-radius: 10px;
-  min-height: 85vh;
+  min-height: 60rem;
 
   display: flex;
   flex-direction: column;

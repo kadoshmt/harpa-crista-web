@@ -7,6 +7,7 @@ import { Container, MainContent } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
 import HimnsList from '../../../components/HimnsList';
+import BackButton from '../../../components/BackButton';
 
 interface Hymn {
   id: number;
@@ -54,6 +55,7 @@ const Autor: React.FC = () => {
         </h3>
 
         {author && <HimnsList hymns={author.hymns} author={author.name} />}
+        <BackButton />
       </MainContent>
     </Container>
   );

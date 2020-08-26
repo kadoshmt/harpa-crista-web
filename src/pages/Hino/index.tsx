@@ -7,6 +7,7 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { Container, MainContent, HymnContainer, HymnBody } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
+import BackButton from '../../components/BackButton';
 
 interface Authors {
   initials: string;
@@ -87,6 +88,7 @@ const Hino: React.FC = () => {
             </Link>
           )}
         </HymnContainer>
+        <BackButton />
       </MainContent>
     </Container>
   );

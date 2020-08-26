@@ -7,6 +7,7 @@ import { Container, MainContent } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
 import HimnsList from '../../../components/HimnsList';
+import BackButton from '../../../components/BackButton';
 
 interface Hymn {
   id: number;
@@ -52,6 +53,7 @@ const Categoria: React.FC = () => {
         </h3>
 
         {category && <HimnsList hymns={category.hymns} />}
+        <BackButton />
       </MainContent>
     </Container>
   );

@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Container, MainContent, CategoriesContainer } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
+import HymnsMenu from '../../../components/HymnsMenu';
 
 interface Categories {
   id: number;
@@ -29,6 +30,8 @@ const Categorias: React.FC = () => {
       <Header menuItem="hinos" />
       <MainContent>
         <h1>Categorias de Hinos</h1>
+
+        <HymnsMenu menuItem="categorias" />
 
         <h3>Foram encontradas {categories && categories.length} categorias.</h3>
         <CategoriesContainer>

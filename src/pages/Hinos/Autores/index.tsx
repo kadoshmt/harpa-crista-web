@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Container, MainContent, AuthorsContainer } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
+import HymnsMenu from '../../../components/HymnsMenu';
 
 interface Author {
   id: number;
@@ -30,6 +31,7 @@ const Autores: React.FC = () => {
       <Header menuItem="hinos" />
       <MainContent>
         <h1>Autores e Tradutores</h1>
+        <HymnsMenu menuItem="autores" />
         <h3>Foram encontrados {authors && authors.length} autores.</h3>
         <AuthorsContainer>
           {authors.map((author: Author) => (

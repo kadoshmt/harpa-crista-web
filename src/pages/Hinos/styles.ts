@@ -45,7 +45,26 @@ export const HymnsPagination = styled.div`
 
         &:hover {
           color: ${props => props.theme.colors.primary};
-          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 456px) {
+    margin-bottom: 2rem !important;
+    ul {
+      li {
+        margin: 0 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 380px) {
+    ul {
+      li {
+        margin: 0;
+        a {
+          padding: 0.5rem 0.8rem;
         }
       }
     }
