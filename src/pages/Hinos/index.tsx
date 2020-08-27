@@ -30,9 +30,7 @@ const Hinos: React.FC = () => {
 
   return (
     <Container>
-      <Helmet>
-        <title>Harpa Cristã | Hinos</title>
-      </Helmet>
+      <Helmet title="Harpa Cristã | Hinos" />
       <Header menuItem="hinos" />
       <MainContent>
         <h1>Hinos</h1>

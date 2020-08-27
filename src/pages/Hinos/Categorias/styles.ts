@@ -31,6 +31,16 @@ export const MainContent = styled.main`
     border-bottom: 1px solid ${props => props.theme.colors.lines};
     padding-bottom: 1.5rem;
   }
+
+  @media (max-width: 510px) {
+    width: 90%;
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    border: 0;
+    margin-top: 64px;
+  }
 `;
 
 export const CategoriesContainer = styled.div`

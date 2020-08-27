@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
@@ -14,9 +14,12 @@ import { useTheme } from '../../hooks/theme';
 import {
   Container,
   HeaderContent,
+  Logo,
   SearchContainer,
   MenuContainer,
+  MenuBurguerContainer,
 } from './styles';
+import Burger from './Burguer';
 
 interface Props {
   menuItem?: 'home' | 'hinos' | 'biblia';
@@ -24,16 +27,35 @@ interface Props {
 
 const Header: React.FC<Props> = ({ menuItem }) => {
   const { theme, themeTitle, toggleTheme } = useTheme();
+  const [words, setWords] = useState<string>('');
+
+  const history = useHistory();
+
+  const handleSearch = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+      e.preventDefault();
+
+      history.push(`/buscar?termo=${words}&pagina=1`);
+    },
+    [history, words],
+  );
+
   return (
     <Container>
       <HeaderContent>
-        <div>HARPA CRISTÃ</div>
+        <MenuBurguerContainer>
+          <Burger />
+        </MenuBurguerContainer>
+        <Logo>HARPA CRISTÃ</Logo>
         <SearchContainer>
-          <input
-            type="text"
-            name=""
-            placeholder="Que música você está buscando?"
-          />
+          <form onSubmit={handleSearch}>
+            <input
+              type="text"
+              name=""
+              placeholder="Que hino você está procurando?"
+              onChange={e => setWords(e.target.value)}
+            />
+          </form>
         </SearchContainer>
         <MenuContainer>
           <ul>
@@ -81,6 +103,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
             </li>
           </ul>
         </MenuContainer>
+
         <Switch
           onChange={toggleTheme}
           checked={themeTitle === 'light'}

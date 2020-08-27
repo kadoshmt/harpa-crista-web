@@ -7,7 +7,7 @@ export const Container = styled.div`
 
 export const MainContent = styled.main`
   max-width: 1280px;
-  width: 100%;
+  width: 94%;
   margin: 0 auto;
   margin-top: 1.4rem;
   padding: 3rem;
@@ -22,6 +22,16 @@ export const MainContent = styled.main`
     color: ${props => props.theme.colors.primary};
     border-left: 4px solid ${props => props.theme.colors.primary};
     padding-left: 2rem;
+  }
+
+  @media (max-width: 510px) {
+    width: 90%;
+  }
+
+  @media (max-width: 425px) {
+    width: 100%;
+    border: 0;
+    margin-top: 64px;
   }
 `;
 

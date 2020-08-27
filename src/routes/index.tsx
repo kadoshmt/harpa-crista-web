@@ -4,6 +4,7 @@ import Route from './Route';
 import Home from '../pages/Home';
 import Hinos from '../pages/Hinos';
 import Hino from '../pages/Hino';
+import Buscar from '../pages/Buscar';
 import Autores from '../pages/Hinos/Autores';
 import Autor from '../pages/Hinos/Autor';
 import Categorias from '../pages/Hinos/Categorias';
@@ -22,6 +23,7 @@ const Routes: React.FC = () => (
     <Route path="/hinos/categoria/:id" component={Categoria} />
     <Route path="/hinos/:page" component={Hinos} />
     <Route path="/hino/:id" component={Hino} />
+    <Route path="/buscar" component={Buscar} />
 
     <Route path="/profile" component={Profile} isPrivate />
   </Switch>

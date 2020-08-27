@@ -10,6 +10,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-content: center;
+
+  @media (max-width: 425px) {
+    position: fixed;
+    width: 100vw;
+    padding-left: 0;
+  }
 `;
 
 export const HeaderContent = styled.div`
@@ -20,6 +26,10 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const Logo = styled.div`
+  font-weight: bold;
 `;
 
 export const SearchContainer = styled.div`
@@ -48,9 +58,15 @@ export const SearchContainer = styled.div`
       min-width: 200px;
     }
   }
+
+  @media (max-width: 580px) {
+    display: none;
+  }
 `;
 
 export const MenuContainer = styled.div`
+  display: block;
+
   ul {
     list-style: none;
     display: flex;
@@ -63,6 +79,7 @@ export const MenuContainer = styled.div`
       font-family: ${props => props.theme.font.family};
       text-decoration: none;
       color: ${props => props.theme.colors.headerIcons};
+      font-weight: bold;
 
       span {
         display: block;
@@ -81,5 +98,17 @@ export const MenuContainer = styled.div`
 
   li + li {
     margin-left: 20px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const MenuBurguerContainer = styled.div`
+  display: none;
+  height: 64px;
+  @media (max-width: 768px) {
+    display: block;
   }
 `;
