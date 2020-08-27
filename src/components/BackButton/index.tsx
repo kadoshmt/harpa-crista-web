@@ -7,12 +7,16 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   url?: string;
 };
 
-const BackButton: React.FC<ButtonProps> = ({ ...rest }) => {
-  const { goBack } = useHistory();
+const BackButton: React.FC<ButtonProps> = ({ url = undefined, ...rest }) => {
+  const history = useHistory();
 
   const handleClick = useCallback(() => {
-    goBack();
-  }, [goBack]);
+    if (url) {
+      history.push(url);
+    } else {
+      history.goBack();
+    }
+  }, [history, url]);
   return (
     <Container
       data-testid="backbutton-container"

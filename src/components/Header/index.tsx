@@ -22,7 +22,7 @@ import {
 import Burger from './Burguer';
 
 interface Props {
-  menuItem?: 'home' | 'hinos' | 'biblia';
+  menuItem?: 'home' | 'hinos' | 'biblia' | undefined;
 }
 
 const Header: React.FC<Props> = ({ menuItem }) => {
@@ -60,7 +60,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
         <MenuContainer>
           <ul>
             <li>
-              <Link to="/">
+              <Link to="/" className={menuItem === 'home' ? 'activeMenu' : ''}>
                 <FiHome
                   color={
                     menuItem === 'home'
@@ -73,7 +73,10 @@ const Header: React.FC<Props> = ({ menuItem }) => {
               </Link>
             </li>
             <li>
-              <Link to="biblia">
+              <Link
+                to="biblia"
+                className={menuItem === 'biblia' ? 'activeMenu' : ''}
+              >
                 <FaBookOpen
                   color={
                     menuItem === 'biblia'
