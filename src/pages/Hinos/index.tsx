@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-import { Container, MainContent, HymnsPagination } from './styles';
+import { Container } from './styles';
 import api from '../../services/api';
-import Header from '../../components/Header';
 
 import HimnsList from '../../components/HimnsList';
 import HymnsMenu from '../../components/HymnsMenu';
+import MainLayout from '../../layouts/MainLayout';
+import HymnsPagination from '../../components/HymnsPagination';
 
 const Hinos: React.FC = () => {
   const [hymns, setHymns] = useState([]);
 
   const { page } = useParams();
+  const pageParam = page || 1;
 
   useEffect(() => {
-    const pageParam = page || 1;
     api
       .get('/hymns', {
         params: {
@@ -26,71 +26,23 @@ const Hinos: React.FC = () => {
       .then(response => {
         setHymns(response.data);
       });
-  }, [page]);
+  }, [pageParam]);
 
   return (
-    <Container>
-      <Helmet title="Harpa Cristã | Hinos" />
-      <Header menuItem="hinos" />
-      <MainContent>
+    <MainLayout menuItem="home" metaTitle="Harpa Cristã | Hinos">
+      <Container>
         <h1>Hinos</h1>
 
         <HymnsMenu />
-        <HymnsPagination style={{ marginBottom: '6rem' }}>
-          <ul>
-            <li>
-              <Link to="/hinos">1</Link>
-            </li>
-            <li>
-              <Link to="/hinos/2">101</Link>
-            </li>
-            <li>
-              <Link to="/hinos/3">201</Link>
-            </li>
-            <li>
-              <Link to="/hinos/4">301</Link>
-            </li>
-            <li>
-              <Link to="/hinos/5">401</Link>
-            </li>
-            <li>
-              <Link to="/hinos/6">501</Link>
-            </li>
-            <li>
-              <Link to="/hinos/7">601</Link>
-            </li>
-          </ul>
-        </HymnsPagination>
+        <HymnsPagination styles={{ marginBottom: '6rem' }} page={pageParam} />
+
         <div>
           <HimnsList hymns={hymns} />
         </div>
-        <HymnsPagination style={{ marginTop: '3rem' }}>
-          <ul>
-            <li>
-              <Link to="/hinos">1</Link>
-            </li>
-            <li>
-              <Link to="/hinos/2">101</Link>
-            </li>
-            <li>
-              <Link to="/hinos/3">201</Link>
-            </li>
-            <li>
-              <Link to="/hinos/4">301</Link>
-            </li>
-            <li>
-              <Link to="/hinos/5">401</Link>
-            </li>
-            <li>
-              <Link to="/hinos/6">501</Link>
-            </li>
-            <li>
-              <Link to="/hinos/7">601</Link>
-            </li>
-          </ul>
-        </HymnsPagination>
-      </MainContent>
-    </Container>
+
+        <HymnsPagination styles={{ marginTop: '6rem' }} page={pageParam} />
+      </Container>
+    </MainLayout>
   );
 };
 

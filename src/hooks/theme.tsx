@@ -4,8 +4,6 @@ import React, {
   useState,
   useContext,
   useEffect,
-  Dispatch,
-  SetStateAction,
   useMemo,
 } from 'react';
 import {

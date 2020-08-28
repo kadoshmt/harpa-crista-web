@@ -1,21 +1,20 @@
 import React from 'react';
 // import { useHistory, Link } from 'react-router-dom';
 
-import { Container, HeaderContent } from './styles';
+import { Container } from './styles';
 // import api from '../../services/api';
-import Header from '../../components/Header';
+
+import MainLayout from '../../layouts/MainLayout';
 // import { useAuth } from '../../hooks/auth';
 
 const Home: React.FC = () => {
   // const history = useHistory();
 
   return (
-    <Container>
-      <Header menuItem="home" />
-      <HeaderContent>
-        <h1>Página Inicial</h1>
-      </HeaderContent>
-    </Container>
+    <MainLayout menuItem="home" metaTitle="Harpa Cristã | Página Inicial">
+      <h1>Página Inicial</h1>
+      <Container>Teste</Container>
+    </MainLayout>
   );
 };
 
