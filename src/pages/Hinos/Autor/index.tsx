@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 
 import { Helmet } from 'react-helmet';
 
-import { Container, MainContent } from './styles';
+import { Container, ResultInfo } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
 import HimnsList from '../../../components/HimnsList';
 import BackButton from '../../../components/BackButton';
+import MainLayout from '../../../layouts/MainLayout';
 
 interface Hymn {
   id: number;
@@ -37,27 +38,25 @@ const Autor: React.FC = () => {
   }, [id]);
 
   return (
-    <Container>
-      <Header menuItem="hinos" />
-
-      <Helmet>
-        <title>{`Harpa Cristã | ${author && author.name}`}</title>
-      </Helmet>
-      <MainContent>
+    <MainLayout
+      menuItem="hinos"
+      metaTitle={`Harpa Cristã | ${author && author.name}`}
+    >
+      <Container>
         <h1>Hinos por Autores</h1>
 
         <h2>
           {author && author.name} - {author && author.initials}
         </h2>
 
-        <h3>
+        <ResultInfo>
           Este autor(a) compôs/traduziu {author && author.total_hymns} hinos.
-        </h3>
+        </ResultInfo>
 
         {author && <HimnsList hymns={author.hymns} author={author.name} />}
         <BackButton />
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

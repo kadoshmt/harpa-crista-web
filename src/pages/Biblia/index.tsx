@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
-import { Container, MainContent, BooksContainer } from './styles';
+import { Container, BooksContainer } from './styles';
 import api from '../../services/api';
 import Header from '../../components/Header';
+import MainLayout from '../../layouts/MainLayout';
 
 interface Books {
   abbrev: {
@@ -36,12 +37,11 @@ const Biblia: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Helmet>
-        <title>Harpa Cristã | Bíblia - Livros da Bíblia</title>
-      </Helmet>
-      <Header menuItem="biblia" />
-      <MainContent>
+    <MainLayout
+      menuItem="biblia"
+      metaTitle="Harpa Cristã | Bíblia - Livros da Bíblia"
+    >
+      <Container>
         <h1>Biblia Sagrada</h1>
 
         <h2>Velho Testamento</h2>
@@ -72,8 +72,8 @@ const Biblia: React.FC = () => {
               </Link>
             ))}
         </BooksContainer>
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-
-import { Container, MainContent } from './styles';
+import { Container, ResultInfo } from './styles';
 import api from '../../services/api';
-import Header from '../../components/Header';
+
 import HimnsList from '../../components/HimnsList';
+import MainLayout from '../../layouts/MainLayout';
 
 interface Hymn {
   id: number;
@@ -46,27 +45,25 @@ const Buscar: React.FC = () => {
   }, [page, words]);
 
   return (
-    <Container>
-      <Header menuItem="hinos" />
-
-      <Helmet>
-        <title>{`Harpa Cristã | Busca por ${words}`}</title>
-      </Helmet>
-      <MainContent>
+    <MainLayout
+      menuItem="hinos"
+      metaTitle={`Harpa Cristã | Busca por ${words}`}
+    >
+      <Container>
         <h1>Buscar</h1>
 
         <h2>Resultado da Busca</h2>
 
-        <h3>
+        <ResultInfo>
           Foram encontradas {hymns.length} hinos para o termo{' '}
           <strong>&ldquo;{words}&ldquo;</strong>.
-        </h3>
+        </ResultInfo>
 
         <div>
           <HimnsList hymns={hymns} />
         </div>
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

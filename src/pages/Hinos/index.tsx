@@ -29,7 +29,7 @@ const Hinos: React.FC = () => {
   }, [pageParam]);
 
   return (
-    <MainLayout menuItem="home" metaTitle="Harpa Cristã | Hinos">
+    <MainLayout menuItem="hinos" metaTitle="Harpa Cristã | Hinos">
       <Container>
         <h1>Hinos</h1>
 

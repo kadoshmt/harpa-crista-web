@@ -3,15 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 
 import { Helmet } from 'react-helmet';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import {
-  Container,
-  MainContent,
-  BookContainer,
-  ChapterContainer,
-} from './styles';
+import { Container, BookContainer, ChapterContainer } from './styles';
 import api from '../../../services/api';
 import Header from '../../../components/Header';
 import BackButton from '../../../components/BackButton';
+import MainLayout from '../../../layouts/MainLayout';
 
 interface Verse {
   number: number;
@@ -82,13 +78,12 @@ const LerBiblia: React.FC = () => {
   }, [book, numChapters]);
 
   return (
-    <Container>
-      <Helmet>
-        <title>{`Harpa Cristã | Bíblia - $  {book && book.book.name}`}</title>
-      </Helmet>
-      <Header menuItem="biblia" />
+    <MainLayout
+      menuItem="biblia"
+      metaTitle={`Harpa Cristã | Bíblia - ${book && book.book.name}`}
+    >
       {isLoaded && (
-        <MainContent>
+        <Container>
           <h1>Biblia Sagrada</h1>
 
           <h2> {book && book.book.name}</h2>
@@ -140,9 +135,9 @@ const LerBiblia: React.FC = () => {
             )}
           </BookContainer>
           <BackButton url="/biblia" />
-        </MainContent>
+        </Container>
       )}
-    </Container>
+    </MainLayout>
   );
 };
 

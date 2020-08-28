@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { Container, MainContent, HymnContainer, HymnBody } from './styles';
+import { Container, ResultInfo, HymnContainer, HymnBody } from './styles';
 import api from '../../services/api';
-import Header from '../../components/Header';
+
 import BackButton from '../../components/BackButton';
+import MainLayout from '../../layouts/MainLayout';
 
 interface Authors {
   initials: string;
@@ -55,13 +54,11 @@ const Hino: React.FC = () => {
   }, [nextHymn]);
 
   return (
-    <Container>
-      <Header menuItem="hinos" />
-
-      <Helmet>
-        <title>{`Harpa Cristã | ${hymn && hymn.title}`}</title>
-      </Helmet>
-      <MainContent>
+    <MainLayout
+      menuItem="hinos"
+      metaTitle={`Harpa Cristã | ${hymn && hymn.title}`}
+    >
+      <Container>
         <h1>Hino</h1>
 
         <h2>
@@ -69,9 +66,9 @@ const Hino: React.FC = () => {
           {hymn && hymn.title}
         </h2>
 
-        <h3>
+        <ResultInfo>
           {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
-        </h3>
+        </ResultInfo>
 
         <HymnContainer>
           {prevHymn && (
@@ -89,8 +86,8 @@ const Hino: React.FC = () => {
           )}
         </HymnContainer>
         <BackButton />
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

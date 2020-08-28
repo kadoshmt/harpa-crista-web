@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-
-import { Container, MainContent } from './styles';
+import { Container, ResultInfo } from './styles';
 import api from '../../../services/api';
-import Header from '../../../components/Header';
+
 import HimnsList from '../../../components/HimnsList';
 import BackButton from '../../../components/BackButton';
+import MainLayout from '../../../layouts/MainLayout';
 
 interface Hymn {
   id: number;
@@ -36,26 +35,24 @@ const Categoria: React.FC = () => {
   }, [id]);
 
   return (
-    <Container>
-      <Header menuItem="hinos" />
-
-      <Helmet>
-        <title>{`Harpa Cristã | ${category && category.title}`}</title>
-      </Helmet>
-      <MainContent>
+    <MainLayout
+      menuItem="hinos"
+      metaTitle={`Harpa Cristã | ${category && category.title}`}
+    >
+      <Container>
         <h1>Hinos por Categoria</h1>
 
         <h2>{category && category.title}</h2>
 
-        <h3>
+        <ResultInfo>
           Foram encontradas {category && category.total_hymns} hinos para esta
           categoria.
-        </h3>
+        </ResultInfo>
 
         {category && <HimnsList hymns={category.hymns} />}
         <BackButton />
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

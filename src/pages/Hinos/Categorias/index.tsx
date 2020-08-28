@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-import { Container, MainContent, CategoriesContainer } from './styles';
+import { Container, ResultInfo, CategoriesContainer } from './styles';
 import api from '../../../services/api';
-import Header from '../../../components/Header';
+
 import HymnsMenu from '../../../components/HymnsMenu';
+import MainLayout from '../../../layouts/MainLayout';
 
 interface Categories {
   id: number;
@@ -23,17 +23,15 @@ const Categorias: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Helmet>
-        <title>Harpa Cristã | Categorias de Hinos</title>
-      </Helmet>
-      <Header menuItem="hinos" />
-      <MainContent>
+    <MainLayout menuItem="hinos" metaTitle="Harpa Cristã | Categorias de Hinos">
+      <Container>
         <h1>Categorias de Hinos</h1>
 
         <HymnsMenu menuItem="categorias" />
 
-        <h3>Foram encontradas {categories && categories.length} categorias.</h3>
+        <ResultInfo>
+          Foram encontradas {categories && categories.length} categorias.
+        </ResultInfo>
         <CategoriesContainer>
           {categories.map((category: Categories) => (
             <Link
@@ -44,8 +42,8 @@ const Categorias: React.FC = () => {
             </Link>
           ))}
         </CategoriesContainer>
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 

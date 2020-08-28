@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import { Helmet } from 'react-helmet';
-import { Container, MainContent, AuthorsContainer } from './styles';
+import { Container, ResultInfo, AuthorsContainer } from './styles';
 import api from '../../../services/api';
-import Header from '../../../components/Header';
+
 import HymnsMenu from '../../../components/HymnsMenu';
+import MainLayout from '../../../layouts/MainLayout';
 
 interface Author {
   id: number;
@@ -24,15 +23,16 @@ const Autores: React.FC = () => {
   }, []);
 
   return (
-    <Container>
-      <Helmet>
-        <title>Harpa Cristã | Autores e Tradutores</title>
-      </Helmet>
-      <Header menuItem="hinos" />
-      <MainContent>
+    <MainLayout
+      menuItem="hinos"
+      metaTitle=">Harpa Cristã | Autores e Tradutores"
+    >
+      <Container>
         <h1>Autores e Tradutores</h1>
         <HymnsMenu menuItem="autores" />
-        <h3>Foram encontrados {authors && authors.length} autores.</h3>
+        <ResultInfo>
+          Foram encontrados {authors && authors.length} autores.
+        </ResultInfo>
         <AuthorsContainer>
           {authors.map((author: Author) => (
             <Link
@@ -45,8 +45,8 @@ const Autores: React.FC = () => {
             </Link>
           ))}
         </AuthorsContainer>
-      </MainContent>
-    </Container>
+      </Container>
+    </MainLayout>
   );
 };
 
