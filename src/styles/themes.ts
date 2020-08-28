@@ -1,26 +1,9 @@
-// interface FontSizeProps {
-//   sm: string;
-//   md: string;
-//   lg: string;
-//   xl: string;
-// }
+import { DefaultTheme } from 'styled-components';
 
-// interface ThemeProps {
-//   title: string;
-
-//   colors: {
-//     [key: string]: string;
-//   };
-
-//   font: {
-//     family: string;
-//     sizes: FontSizeProps;
-//   };
-// }
-
-// interface TypeThemeProps {
-//   [key: string]: ThemeProps;
-// }
+interface DefinitionThemes {
+  light: DefaultTheme;
+  dark: DefaultTheme;
+}
 
 export default {
   light: {
@@ -97,4 +80,4 @@ export default {
       },
     },
   },
-};
+} as DefinitionThemes;

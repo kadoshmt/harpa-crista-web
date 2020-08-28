@@ -1,27 +1,28 @@
 export default {
   title: 'light',
-
   colors: {
     primaryLight: '#ff9100',
     primary: '#FF6000',
     primaryDark: '#dd3800',
     secundary: '#4a3f35',
     secundaryDark: '#2f2519',
-    background: '#F0F0F7',
-    text: '#333',
+    background: '#eef0f1',
+    text: '#64707d',
     titleInPrimary: '#FFFFFF',
     textInPrimary: '#fefae0',
-    textTitle: '#353535',
-    inputBackground: '#F8F8FC',
+    textTitle: '#08090a',
+    inputBackground: '#F8F8FC', // border b5bdc4
     buttonText: '#FFFFFF',
 
-    headerText: '#333',
-    headerBackground: '#f1f1f1',
-    headerIcons: '#666',
-    headerActiveIcons: '#333',
+    headerText: '#4d5760',
+    headerBackground: '#ffffff',
+    headerIcons: '#363d44',
+    headerActiveIcons: '#ff9100',
+    lines: '#d7d9d9',
 
-    footerText: '#eee',
-    footerBackground: '#333',
+    footerText: '#eeeeee',
+    footerBackground: '#333333',
+    mainContent: '#ffffff',
   },
 
   font: {

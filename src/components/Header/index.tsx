@@ -11,6 +11,7 @@ import { FaMusic, FaBookOpen } from 'react-icons/fa';
 import Switch from 'react-switch';
 import { shade } from 'polished';
 import { useTheme } from '../../hooks/theme';
+
 import {
   Container,
   HeaderContent,
@@ -22,6 +23,7 @@ import {
 import Burger from './Burguer';
 
 interface Props {
+  // toggleTheme(): void;
   menuItem?: 'home' | 'hinos' | 'biblia' | undefined;
 }
 
@@ -35,7 +37,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
     async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
       e.preventDefault();
 
-      history.push(`/buscar?termo=${words}&pagina=1`);
+      history.push(`/buscar?termo=${words}`);
     },
     [history, words],
   );

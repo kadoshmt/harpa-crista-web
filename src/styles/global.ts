@@ -83,9 +83,9 @@ export default createGlobalStyle`
   input,
   button,
   textarea {
-  font: 400 1.6rem ${props => props.theme.font.family};
-  color: ${props => props.theme.colors.text};
-}
+    font: 500 1.6rem ${props => props.theme.font.family};
+    color: ${props => props.theme.colors.text};
+  }
 
   button {
     cursor: pointer;
