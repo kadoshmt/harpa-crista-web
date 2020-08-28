@@ -74,7 +74,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
             </li>
             <li>
               <Link
-                to="biblia"
+                to="/biblia"
                 className={menuItem === 'biblia' ? 'activeMenu' : ''}
               >
                 <FaBookOpen
