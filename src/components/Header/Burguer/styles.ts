@@ -22,7 +22,7 @@ export const StyledBurger = styled.div`
 
   /* Color/shape of burger icon bars on hover*/
   .bm-burger-bars-hover {
-    background: ${props => props.theme.colors.headerActiveIcons};
+    background: ${props => props.theme.colors.primary};
   }
 
   /* Position and sizing of clickable cross button */
@@ -47,7 +47,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
   /* General sidebar styles */
   .bm-menu {
-    background: ${props => props.theme.colors.headerIcons};
+    background: ${props => props.theme.colors.textSecondary};
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
   }
@@ -82,6 +82,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   }
 
   a:hover {
-    color: ${props => props.theme.colors.headerActiveIcons};
+    color: ${props => props.theme.colors.primary};
   }
 `;

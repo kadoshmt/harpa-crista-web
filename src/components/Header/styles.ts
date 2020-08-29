@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 64px;
   padding: 16px;
-  background: ${props => props.theme.colors.headerBackground};
+  background: ${props => props.theme.colors.background};
   border-bottom: 1px solid ${props => props.theme.colors.lines};
   font-size: 2.8rem;
   display: flex;
@@ -78,7 +78,7 @@ export const MenuContainer = styled.div`
       font-size: ${props => props.theme.font.sizes.md};
       font-family: ${props => props.theme.font.family};
       text-decoration: none;
-      color: ${props => props.theme.colors.headerIcons};
+      color: ${props => props.theme.colors.textSecondary};
       font-weight: bold;
 
       span {
@@ -87,11 +87,11 @@ export const MenuContainer = styled.div`
       }
 
       &.activeMenu {
-        color: ${props => props.theme.colors.headerActiveIcons};
+        color: ${props => props.theme.colors.primary};
       }
 
       &:hover {
-        color: ${props => props.theme.colors.headerActiveIcons};
+        color: ${props => props.theme.colors.primary};
       }
     }
   }

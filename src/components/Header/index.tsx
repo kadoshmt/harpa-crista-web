@@ -67,7 +67,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
                   color={
                     menuItem === 'home'
                       ? theme.colors.primary
-                      : theme.colors.headerIcons
+                      : theme.colors.textSecondary
                   }
                   size={20}
                 />
@@ -83,7 +83,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
                   color={
                     menuItem === 'biblia'
                       ? theme.colors.primary
-                      : theme.colors.headerIcons
+                      : theme.colors.textSecondary
                   }
                   size={20}
                 />
@@ -99,7 +99,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
                   color={
                     menuItem === 'hinos'
                       ? theme.colors.primary
-                      : theme.colors.headerIcons
+                      : theme.colors.textSecondary
                   }
                   size={20}
                 />
@@ -116,7 +116,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
           uncheckedIcon={false}
           height={20}
           width={34}
-          offColor={shade(0.3, theme.colors.headerBackground)}
+          offColor={shade(0.3, theme.colors.textSecondary)}
           onColor={theme.colors.primary}
         />
       </HeaderContent>

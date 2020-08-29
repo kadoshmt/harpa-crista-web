@@ -7,21 +7,20 @@ export const Wrapper = styled.div`
 
 export const Container = styled.main`
   max-width: 1280px;
-  width: 94%;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 1.4rem;
   padding: 3rem;
 
-  background: ${props => props.theme.colors.mainContent};
-  border: 1px solid ${props => props.theme.colors.lines};
-  border-radius: 10px;
-  min-height: calc(100vh - (1.4rem * 2) - (64px * 2));
+  background: ${props => props.theme.colors.background};
+
+  /* min-height: calc(100vh - (1.4rem * 2) - (64px * 2)); */
 
   h1 {
     margin-bottom: 1.6rem;
     color: ${props => props.theme.colors.primary};
-    border-left: 4px solid ${props => props.theme.colors.primary};
-    padding-left: 2rem;
+    /* border-left: 4px solid ${props => props.theme.colors.primary};
+    padding-left: 1rem; */
+    font-weight: bold;
   }
 
   @media (max-width: 510px) {

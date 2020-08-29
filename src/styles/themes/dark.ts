@@ -2,27 +2,18 @@ export default {
   title: 'dark',
   colors: {
     primaryLight: '#ff9100',
-    primary: '#FF6000',
+    primary: '#ff6000',
     primaryDark: '#dd3800',
-    secundary: '#4a3f35',
-    secundaryDark: '#2f2519',
-    background: '#2f3136',
-    text: '#b9bbbe',
-    titleInPrimary: '#FFFFFF',
-    textInPrimary: '#fefae0',
-    textTitle: '#353535',
-    inputBackground: '#202225',
-    buttonText: '#FFFFFF',
 
-    headerText: '#72767d',
-    headerBackground: '#202225',
-    headerIcons: '#666666',
-    headerActiveIcons: '#FF6000',
-    lines: '#222222',
+    text: '#ffffff',
+    textSecondary: '#b9bbbe',
+    textInPrimary: '#ffffff',
 
-    footerText: '#eeeeee',
-    footerBackground: '#333333',
-    mainContent: '#36393f',
+    background: '#282a36',
+    backgroundSecondary: '#21222c',
+
+    inputBackground: '#191a21',
+    lines: '#191a21',
   },
 
   font: {

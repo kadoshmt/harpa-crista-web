@@ -10,39 +10,42 @@ export const Container = styled.div`
     display: block;
     width: 33.3%;
 
-    & :hover {
-      background: ${props => props.theme.colors.inputBackground};
-    }
-
-    div {
+    p {
       display: flex;
       padding: 1rem;
-      border-radius: 10px;
-
-      > span {
-        font-weight: bold;
-      }
+      color: ${props => props.theme.colors.textSecondary};
 
       span {
+        font-weight: bold;
+        color: ${props => props.theme.colors.lines};
         font-size: 4.6rem;
-        display: flex;
-        color: #ccc;
         min-width: 8rem;
+      }
 
-        & + span {
-          min-width: 20rem;
-          flex-direction: column;
-          justify-content: center;
-          font-size: ${props => props.theme.font.sizes.md};
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: ${props => props.theme.font.sizes.md};
+        font-weight: normal;
 
-          margin-left: 1rem;
+        margin-left: 1rem;
 
-          strong {
-            font-size: 2rem;
-            font-weight: bold;
-            color: ${props => props.theme.colors.text};
-          }
+        strong {
+          font-size: 2rem;
+          font-weight: bold;
+          color: ${props => props.theme.colors.text};
         }
+      }
+    }
+
+    & :hover {
+      background: ${props => props.theme.colors.inputBackground};
+
+      span,
+      div,
+      strong {
+        color: ${props => props.theme.colors.primary} !important;
       }
     }
   }

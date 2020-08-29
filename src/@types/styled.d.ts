@@ -8,23 +8,16 @@ declare module 'styled-components' {
       primaryLight: string;
       primary: string;
       primaryDark: string;
-      secundary: string;
-      secundaryDark: string;
-      background: string;
+
       text: string;
-      titleInPrimary: string;
+      textSecondary: string;
       textInPrimary: string;
-      textTitle: string;
+
+      background: string;
+      backgroundSecondary: string;
+
       inputBackground: string;
-      buttonText: string;
-      headerText: string;
-      headerBackground: string;
-      headerIcons: string;
-      headerActiveIcons: string;
-      footerText: string;
-      footerBackground: string;
       lines: string;
-      mainContent: string;
     };
 
     font: {

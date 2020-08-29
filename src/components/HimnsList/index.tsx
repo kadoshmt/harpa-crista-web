@@ -31,15 +31,15 @@ const HimnsList: React.FC<Props> = ({
       {hymns &&
         hymns.map((hymn: Hymn) => (
           <Link key={hymn.id} to={`/hino/${hymn.num_hymn}/${hymn.slug}`}>
-            <div>
+            <p>
               <span>{String(hymn.num_hymn).padStart(3, '0')}</span>
-              <span>
+              <div>
                 <strong>{hymn.title}</strong>
                 {hymn.authors && hymn.authors.length > 0
                   ? hymn.authors[0].name
                   : author}
-              </span>
-            </div>
+              </div>
+            </p>
           </Link>
         ))}
     </Container>
