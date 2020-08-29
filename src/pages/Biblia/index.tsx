@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, BooksContainer } from './styles';
 import api from '../../services/api';
 
+import { Container, BooksContainer } from './styles';
+
 import MainLayout from '../../layouts/MainLayout';
+import Loading from '../../components/Loading';
 
 interface Books {
   abbrev: {
@@ -43,6 +45,7 @@ const Biblia: React.FC = () => {
       metaTitle="Harpa Cristã | Bíblia - Livros da Bíblia"
     >
       <h1>Biblia Sagrada</h1>
+      {!isLoaded && <Loading />}
       {isLoaded && (
         <Container>
           <h2>Velho Testamento</h2>

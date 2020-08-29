@@ -1,13 +1,22 @@
 import styled from 'styled-components';
 
-export const Container = styled.main``;
+export const Container = styled.main`
+  h2 {
+    text-align: center;
+    color: ${props => props.theme.colors.textSecondary};
+  }
+`;
 
 export const ResultInfo = styled.div`
   font-size: ${props => props.theme.font.sizes.md};
   font-weight: 400;
+  margin: 0 auto;
   margin-bottom: 2.5rem;
   border-bottom: 1px solid ${props => props.theme.colors.lines};
   padding-bottom: 1rem;
+  text-align: center;
+  width: 100%;
+  max-width: 94rem;
 `;
 
 export const HymnContainer = styled.div`

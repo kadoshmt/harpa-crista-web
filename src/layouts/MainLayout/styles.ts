@@ -13,14 +13,13 @@ export const Container = styled.main`
 
   background: ${props => props.theme.colors.background};
 
-  /* min-height: calc(100vh - (1.4rem * 2) - (64px * 2)); */
+  min-height: calc(100vh - (1.4rem * 2) - 200px);  
 
   h1 {
     margin-bottom: 1.6rem;
     color: ${props => props.theme.colors.primary};
     /* border-left: 4px solid ${props => props.theme.colors.primary};
-    padding-left: 1rem; */
-    font-weight: bold;
+    padding-left: 1rem; */    
   }
 
   @media (max-width: 510px) {

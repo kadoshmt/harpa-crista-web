@@ -7,6 +7,7 @@ import api from '../../../services/api';
 
 import BackButton from '../../../components/BackButton';
 import MainLayout from '../../../layouts/MainLayout';
+import Loading from '../../../components/Loading';
 
 interface Verse {
   number: number;
@@ -81,10 +82,10 @@ const LerBiblia: React.FC = () => {
       menuItem="biblia"
       metaTitle={`Harpa Cristã | Bíblia - ${book && book.book.name}`}
     >
+      <h1>Biblia Sagrada</h1>
+      {!isLoaded && <Loading />}
       {isLoaded && (
         <Container>
-          <h1>Biblia Sagrada</h1>
-
           <h2>
             {' '}
             {book && book.book.name} {book && book.chapter.number}

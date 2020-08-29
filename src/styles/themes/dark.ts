@@ -13,7 +13,7 @@ export default {
     backgroundSecondary: '#21222c',
 
     inputBackground: '#191a21',
-    lines: '#191a21',
+    lines: '#747686',
   },
 
   font: {

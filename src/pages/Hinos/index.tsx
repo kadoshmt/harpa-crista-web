@@ -8,9 +8,11 @@ import HimnsList from '../../components/HimnsList';
 import HymnsMenu from '../../components/HymnsMenu';
 import MainLayout from '../../layouts/MainLayout';
 import HymnsPagination from '../../components/HymnsPagination';
+import Loading from '../../components/Loading';
 
 const Hinos: React.FC = () => {
   const [hymns, setHymns] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { page } = useParams();
   const pageParam = page || 1;
@@ -25,22 +27,30 @@ const Hinos: React.FC = () => {
       })
       .then(response => {
         setHymns(response.data);
+        setIsLoaded(true);
       });
   }, [pageParam]);
 
   return (
     <MainLayout menuItem="hinos" metaTitle="Harpa Cristã | Hinos">
+      <h1>Hinos</h1>
       <Container>
-        <h1>Hinos</h1>
-
         <HymnsMenu />
-        <HymnsPagination styles={{ marginBottom: '6rem' }} page={pageParam} />
+        {!isLoaded && <Loading />}
+        {isLoaded && (
+          <>
+            <HymnsPagination
+              styles={{ marginBottom: '6rem' }}
+              page={pageParam}
+            />
 
-        <div>
-          <HimnsList hymns={hymns} />
-        </div>
+            <div>
+              <HimnsList hymns={hymns} />
+            </div>
 
-        <HymnsPagination styles={{ marginTop: '6rem' }} page={pageParam} />
+            <HymnsPagination styles={{ marginTop: '6rem' }} page={pageParam} />
+          </>
+        )}
       </Container>
     </MainLayout>
   );

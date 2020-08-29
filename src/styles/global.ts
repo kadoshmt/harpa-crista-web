@@ -48,7 +48,7 @@ export default createGlobalStyle`
   }
 
   h1,h2,h3, h4, h5, h6, strong {
-    font-weight: 500;    
+    font-weight: bold;    
   }
 
   h1 {
@@ -83,7 +83,7 @@ export default createGlobalStyle`
   input,
   button,
   textarea {
-    font: 500 1.6rem ${props => props.theme.font.family};
+    font: 400 1.6rem ${props => props.theme.font.family};
     color: ${props => props.theme.colors.text};
   }
 

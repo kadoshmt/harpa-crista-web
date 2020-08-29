@@ -29,9 +29,11 @@ export const BookContainer = styled.div`
   flex-direction: row;
 
   justify-content: space-evenly;
-  align-items: center;
+  align-items: flex-start;
 
   a {
+    margin-top: 20rem;
+
     border: 2px solid ${props => props.theme.colors.lines};
     border-radius: 50%;
     padding: 0.8rem;
