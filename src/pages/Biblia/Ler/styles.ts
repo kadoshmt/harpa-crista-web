@@ -4,8 +4,13 @@ export const Container = styled.main`
   h2 {
     margin-top: 3rem;
     margin-bottom: 2.5rem;
-    border-bottom: 1px solid ${props => props.theme.colors.lines};
+    /* border-bottom: 1px solid ${props => props.theme.colors.lines}; */
     padding-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  section {
+    display: none;
   }
 
   @media (max-width: 425px) {
@@ -57,7 +62,7 @@ export const ChapterContainer = styled.div`
   width: 100%;
   max-width: 94rem;
   margin: 0 auto;
-  margin-top: 6rem;
+  /* margin-top: 6rem; */
 
   p {
     line-height: 2.5rem;

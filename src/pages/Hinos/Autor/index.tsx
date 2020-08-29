@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
-
 import { Container, ResultInfo } from './styles';
 import api from '../../../services/api';
-import Header from '../../../components/Header';
+
 import HimnsList from '../../../components/HimnsList';
 import BackButton from '../../../components/BackButton';
 import MainLayout from '../../../layouts/MainLayout';

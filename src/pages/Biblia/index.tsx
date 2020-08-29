@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 
 import { Container, BooksContainer } from './styles';
 import api from '../../services/api';
-import Header from '../../components/Header';
+
 import MainLayout from '../../layouts/MainLayout';
 
 interface Books {
@@ -21,6 +20,7 @@ interface Books {
 
 const Biblia: React.FC = () => {
   const [books, setBooks] = useState<Books[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     api
@@ -33,6 +33,7 @@ const Biblia: React.FC = () => {
       })
       .then(response => {
         setBooks(response.data);
+        setIsLoaded(true);
       });
   }, []);
 
@@ -41,38 +42,39 @@ const Biblia: React.FC = () => {
       menuItem="biblia"
       metaTitle="Harpa Cristã | Bíblia - Livros da Bíblia"
     >
-      <Container>
-        <h1>Biblia Sagrada</h1>
+      <h1>Biblia Sagrada</h1>
+      {isLoaded && (
+        <Container>
+          <h2>Velho Testamento</h2>
+          <BooksContainer>
+            {books
+              .filter(item => item.testament === 'VT')
+              .map((book: Books) => (
+                <Link
+                  key={book.abbrev.pt}
+                  to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
+                >
+                  <div>{book.name}</div>
+                </Link>
+              ))}
+          </BooksContainer>
 
-        <h2>Velho Testamento</h2>
-        <BooksContainer>
-          {books
-            .filter(item => item.testament === 'VT')
-            .map((book: Books) => (
-              <Link
-                key={book.abbrev.pt}
-                to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
-              >
-                <div>{book.name}</div>
-              </Link>
-            ))}
-        </BooksContainer>
+          <h2>Novo Testamento</h2>
 
-        <h2>Novo Testamento</h2>
-
-        <BooksContainer>
-          {books
-            .filter(item => item.testament === 'NT')
-            .map((book: Books) => (
-              <Link
-                key={book.abbrev.pt}
-                to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
-              >
-                <div>{book.name}</div>
-              </Link>
-            ))}
-        </BooksContainer>
-      </Container>
+          <BooksContainer>
+            {books
+              .filter(item => item.testament === 'NT')
+              .map((book: Books) => (
+                <Link
+                  key={book.abbrev.pt}
+                  to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
+                >
+                  <div>{book.name}</div>
+                </Link>
+              ))}
+          </BooksContainer>
+        </Container>
+      )}
     </MainLayout>
   );
 };

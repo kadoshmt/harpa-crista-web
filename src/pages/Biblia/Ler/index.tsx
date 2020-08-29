@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-import { Helmet } from 'react-helmet';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { Container, BookContainer, ChapterContainer } from './styles';
 import api from '../../../services/api';
-import Header from '../../../components/Header';
+
 import BackButton from '../../../components/BackButton';
 import MainLayout from '../../../layouts/MainLayout';
 
@@ -39,7 +38,7 @@ const LerBiblia: React.FC = () => {
   const [book, setBook] = useState<Book>();
   const [numChapters, setNumChapters] = useState<Number>(0);
   const { abbrev, testament } = useParams();
-  const { chapter } = useParams() || 1;
+  const { chapter } = useParams();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const LerBiblia: React.FC = () => {
       .then(response => {
         setNumChapters(response.data.chapters || 0);
       });
-  }, [book, abbrev, chapter]);
+  }, [abbrev, chapter]);
 
   const checkPrevUrl = useMemo(() => {
     return book && book.chapter.number > 1;
@@ -86,7 +85,10 @@ const LerBiblia: React.FC = () => {
         <Container>
           <h1>Biblia Sagrada</h1>
 
-          <h2> {book && book.book.name}</h2>
+          <h2>
+            {' '}
+            {book && book.book.name} {book && book.chapter.number}
+          </h2>
 
           <section>
             <p>
