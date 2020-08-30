@@ -17,6 +17,7 @@ export const Container = styled.section`
         font-weight: bold;
         color: ${props => props.theme.colors.text};
         padding: 0.5rem 1rem;
+        transition: all 0.3s;
 
         &.activeMenu {
           color: ${props => props.theme.colors.primary};

@@ -1,10 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
-import { FiHome, FiSearch } from 'react-icons/fi';
+import { FiHome } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 // import { IoMdMusicalNotes, IoMdMusicalNote, IoMdBook } from 'react-icons/io';
 
@@ -16,31 +16,18 @@ import {
   Container,
   HeaderContent,
   Logo,
-  SearchContainer,
   MenuContainer,
   MenuBurguerContainer,
 } from './styles';
 import Burger from './Burguer';
+import SearchBar from './SearchBar';
 
 interface Props {
-  // toggleTheme(): void;
   menuItem?: 'home' | 'hinos' | 'biblia' | undefined;
 }
 
 const Header: React.FC<Props> = ({ menuItem }) => {
   const { theme, themeTitle, toggleTheme } = useTheme();
-  const [words, setWords] = useState<string>('');
-
-  const history = useHistory();
-
-  const handleSearch = useCallback(
-    async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-      e.preventDefault();
-
-      history.push(`/buscar?termo=${words}`);
-    },
-    [history, words],
-  );
 
   return (
     <Container>
@@ -48,22 +35,11 @@ const Header: React.FC<Props> = ({ menuItem }) => {
         <MenuBurguerContainer>
           <Burger />
         </MenuBurguerContainer>
+
         <Logo>HARPA CRISTÃ</Logo>
-        <SearchContainer>
-          <form onSubmit={handleSearch}>
-            <div>
-              <input
-                type="text"
-                name=""
-                placeholder="Que hino você está procurando?"
-                onChange={e => setWords(e.target.value)}
-              />
-              <button type="submit">
-                <FiSearch size={20} />
-              </button>
-            </div>
-          </form>
-        </SearchContainer>
+
+        <SearchBar />
+
         <MenuContainer>
           <menu>
             <li>

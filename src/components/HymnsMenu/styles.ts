@@ -18,6 +18,8 @@ export const Container = styled.nav`
       padding: 1rem 2.5rem;
       text-align: center;
       align-items: center;
+      border-bottom: 3px solid ${props => props.theme.colors.background};
+      transition: all 0.3s;
     }
 
     &.activeMenu {
