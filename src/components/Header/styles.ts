@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // import { shade } from 'polished';
 
-export const Container = styled.div`
+export const Container = styled.header`
   height: 64px;
   padding: 16px;
   background: ${props => props.theme.colors.background};
@@ -64,10 +64,10 @@ export const SearchContainer = styled.div`
   }
 `;
 
-export const MenuContainer = styled.div`
+export const MenuContainer = styled.nav`
   display: block;
 
-  ul {
+  menu {
     list-style: none;
     display: flex;
 
@@ -80,6 +80,7 @@ export const MenuContainer = styled.div`
       text-decoration: none;
       color: ${props => props.theme.colors.textSecondary};
       font-weight: bold;
+      /* transition: all 0.3s; */
 
       span {
         display: block;
@@ -92,6 +93,9 @@ export const MenuContainer = styled.div`
 
       &:hover {
         color: ${props => props.theme.colors.primary};
+        > svg {
+          color: ${props => props.theme.colors.primary} !important;
+        }
       }
     }
   }

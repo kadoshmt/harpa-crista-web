@@ -41,6 +41,8 @@ export const BookContainer = styled.div`
     justify-content: center;
     align-items: center;
 
+    transition: all 0.2s;
+
     > svg {
       color: ${props => props.theme.colors.lines};
     }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
-import { Container, BooksContainer } from './styles';
+import { Container, BooksContainer, Book } from './styles';
 
 import MainLayout from '../../layouts/MainLayout';
 import Loading from '../../components/Loading';
@@ -53,12 +53,14 @@ const Biblia: React.FC = () => {
             {books
               .filter(item => item.testament === 'VT')
               .map((book: Books) => (
-                <Link
-                  key={book.abbrev.pt}
-                  to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
-                >
-                  <div>{book.name}</div>
-                </Link>
+                <Book>
+                  <Link
+                    key={book.abbrev.pt}
+                    to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
+                  >
+                    <div>{book.name}</div>
+                  </Link>
+                </Book>
               ))}
           </BooksContainer>
 
@@ -68,12 +70,14 @@ const Biblia: React.FC = () => {
             {books
               .filter(item => item.testament === 'NT')
               .map((book: Books) => (
-                <Link
-                  key={book.abbrev.pt}
-                  to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
-                >
-                  <div>{book.name}</div>
-                </Link>
+                <Book>
+                  <Link
+                    key={book.abbrev.pt}
+                    to={`/biblia/${book.testament}/${book.abbrev.pt}/1`}
+                  >
+                    <div>{book.name}</div>
+                  </Link>
+                </Book>
               ))}
           </BooksContainer>
         </Container>

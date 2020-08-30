@@ -60,7 +60,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
           </form>
         </SearchContainer>
         <MenuContainer>
-          <ul>
+          <menu>
             <li>
               <Link to="/" className={menuItem === 'home' ? 'activeMenu' : ''}>
                 <FiHome
@@ -106,7 +106,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
                 <span>Hinos</span>
               </Link>
             </li>
-          </ul>
+          </menu>
         </MenuContainer>
 
         <Switch

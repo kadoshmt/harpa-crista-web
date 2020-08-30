@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const Container = styled.div`
   h2 {
     text-align: center;
     color: ${props => props.theme.colors.textSecondary};
   }
 `;
 
-export const ResultInfo = styled.div`
+export const ResultInfo = styled.summary`
   font-size: ${props => props.theme.font.sizes.md};
   font-weight: 400;
   margin: 0 auto;
@@ -19,7 +19,7 @@ export const ResultInfo = styled.div`
   max-width: 94rem;
 `;
 
-export const HymnContainer = styled.div`
+export const HymnContainer = styled.section`
   width: 100%;
   margin: 0 auto;
 
@@ -53,7 +53,7 @@ export const HymnContainer = styled.div`
   }
 `;
 
-export const HymnBody = styled.div`
+export const HymnBody = styled.article`
   -webkit-column-count: 2; /* Chrome, Safari, Opera */
   -moz-column-count: 2; /* Firefox */
   column-count: 2; /* padrão */

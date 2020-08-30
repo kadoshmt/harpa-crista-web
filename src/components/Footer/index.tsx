@@ -6,7 +6,7 @@ import { Container } from './styles';
 const Footer: React.FC = () => {
   return (
     <Container>
-      <h2>Rodapé</h2>
+      <small>Copyright © 2020. Todos os direitos reservados.</small>
     </Container>
   );
 };

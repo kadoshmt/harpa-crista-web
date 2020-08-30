@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.nav`
   display: -webkit-flex; /* Safari */
   display: flex; /* Standard syntax */
   margin: 3rem 0;

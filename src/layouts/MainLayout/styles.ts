@@ -17,7 +17,7 @@ export const Container = styled.main`
 
   h1 {
     margin-bottom: 1.6rem;
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.primaryLight};
     /* border-left: 4px solid ${props => props.theme.colors.primary};
     padding-left: 1rem; */    
   }

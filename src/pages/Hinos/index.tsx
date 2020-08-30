@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from './styles';
 import api from '../../services/api';
 
-import HimnsList from '../../components/HimnsList';
+import HymnsList from '../../components/HymnsList';
 import HymnsMenu from '../../components/HymnsMenu';
 import MainLayout from '../../layouts/MainLayout';
 import HymnsPagination from '../../components/HymnsPagination';
@@ -45,7 +45,7 @@ const Hinos: React.FC = () => {
             />
 
             <div>
-              <HimnsList hymns={hymns} />
+              <HymnsList hymns={hymns} />
             </div>
 
             <HymnsPagination styles={{ marginTop: '6rem' }} page={pageParam} />

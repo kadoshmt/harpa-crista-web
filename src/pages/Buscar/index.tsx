@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { Container, ResultInfo } from './styles';
 import api from '../../services/api';
 
-import HimnsList from '../../components/HimnsList';
+import HymnsList from '../../components/HymnsList';
 import MainLayout from '../../layouts/MainLayout';
 
 interface Hymn {
@@ -60,7 +60,7 @@ const Buscar: React.FC = () => {
         </ResultInfo>
 
         <div>
-          <HimnsList hymns={hymns} />
+          <HymnsList hymns={hymns} />
         </div>
       </Container>
     </MainLayout>

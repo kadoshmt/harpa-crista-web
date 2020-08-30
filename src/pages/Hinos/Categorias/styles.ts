@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.main``;
+export const Container = styled.div``;
 
-export const ResultInfo = styled.div`
+export const ResultInfo = styled.summary`
   font-size: ${props => props.theme.font.sizes.md};
   font-weight: 400;
   margin-bottom: 2.5rem;
@@ -10,7 +10,7 @@ export const ResultInfo = styled.div`
   padding-bottom: 1rem;
 `;
 
-export const CategoriesContainer = styled.div`
+export const CategoriesContainer = styled.section`
   -webkit-column-count: 3; /* Chrome, Safari, Opera */
   -moz-column-count: 3; /* Firefox */
   column-count: 3; /* padrão */

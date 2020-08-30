@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Container, ResultInfo } from './styles';
+import { Container, ResultInfo, HymnsContainer } from './styles';
 import api from '../../../services/api';
 
-import HimnsList from '../../../components/HimnsList';
+import HymnsList from '../../../components/HymnsList';
 import BackButton from '../../../components/BackButton';
 import MainLayout from '../../../layouts/MainLayout';
 
@@ -40,16 +40,21 @@ const Categoria: React.FC = () => {
       metaTitle={`Harpa Cristã | ${category && category.title}`}
     >
       <Container>
-        <h1>Hinos por Categoria</h1>
+        <hgroup>
+          <h1>Hinos por Categoria</h1>
 
-        <h2>{category && category.title}</h2>
+          <h2>{category && category.title}</h2>
+        </hgroup>
 
         <ResultInfo>
           Foram encontradas {category && category.total_hymns} hinos para esta
           categoria.
         </ResultInfo>
 
-        {category && <HimnsList hymns={category.hymns} />}
+        <HymnsContainer>
+          {category && <HymnsList hymns={category.hymns} />}
+        </HymnsContainer>
+
         <BackButton />
       </Container>
     </MainLayout>
