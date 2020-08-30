@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
-import { FiHome } from 'react-icons/fi';
+import { FiHome, FiSearch } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 // import { IoMdMusicalNotes, IoMdMusicalNote, IoMdBook } from 'react-icons/io';
 
@@ -51,12 +51,17 @@ const Header: React.FC<Props> = ({ menuItem }) => {
         <Logo>HARPA CRISTÃ</Logo>
         <SearchContainer>
           <form onSubmit={handleSearch}>
-            <input
-              type="text"
-              name=""
-              placeholder="Que hino você está procurando?"
-              onChange={e => setWords(e.target.value)}
-            />
+            <div>
+              <input
+                type="text"
+                name=""
+                placeholder="Que hino você está procurando?"
+                onChange={e => setWords(e.target.value)}
+              />
+              <button type="submit">
+                <FiSearch size={20} />
+              </button>
+            </div>
           </form>
         </SearchContainer>
         <MenuContainer>

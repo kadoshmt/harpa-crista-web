@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
-export const Container = styled.main`
+export const Container = styled.div`
   h2 {
     margin-top: 3rem;
     margin-bottom: 2.5rem;
     /* border-bottom: 1px solid ${props => props.theme.colors.lines}; */
     padding-bottom: 1.5rem;
     text-align: center;
-  }
-
-  section {
-    display: none;
-  }
+  }  
 
   @media (max-width: 425px) {
     h2 {
@@ -19,6 +15,10 @@ export const Container = styled.main`
       border: 0;
     }
   }
+`;
+
+export const BookInfo = styled.dl`
+  display: none;
 `;
 
 export const BookContainer = styled.div`

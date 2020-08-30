@@ -33,29 +33,62 @@ export const Logo = styled.div`
 `;
 
 export const SearchContainer = styled.div`
-  input {
-    flex: 1;
+  form {
     min-width: 500px;
-    height: 4rem;
 
-    border-radius: 0.8rem;
-    background: ${props => props.theme.colors.inputBackground};
-    border: 1px solid ${props => props.theme.colors.lines};
-    outline: 0;
-    padding: 0 1.6rem;
-    font-size: ${props => props.theme.font.sizes.md};
-    font-family: ${props => props.theme.font.family};
-    font-weight: 300;
+    div {
+      display: flex;
+      justify-content: space-evenly;
+
+      border-radius: 0.8rem;
+      background: ${props => props.theme.colors.inputBackground};
+      border: 1px solid ${props => props.theme.colors.lines};
+      outline: 0;
+      padding-left: 1.6rem;
+      font-family: ${props => props.theme.font.family};
+      font-weight: 300;
+
+      &:focus-within {
+        border: 1px solid ${props => props.theme.colors.primary};
+      }
+
+      input[type='text'] {
+        flex: 1;
+        background: ${props => props.theme.colors.inputBackground};
+        border: 0;
+        height: 4rem;
+        font-size: ${props => props.theme.font.sizes.lg};
+      }
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: ${props => props.theme.colors.primary};
+        border: 1px solid ${props => props.theme.colors.primary};
+        border-radius: 0 0.8rem 0.8rem 0;
+        width: 4.4rem;
+
+        > svg {
+          color: ${props => props.theme.colors.textInPrimary};
+        }
+      }
+    }
   }
+
   @media (max-width: 1030px) {
-    input {
+    form {
       min-width: 300px;
     }
   }
 
   @media (max-width: 840px) {
-    input {
-      min-width: 200px;
+    form {
+      min-width: 240px;
+      div {
+        input[type='text'] {
+          font-size: ${props => props.theme.font.sizes.sm};
+        }
+      }
     }
   }
 

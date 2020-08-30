@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { Container, BookContainer, ChapterContainer } from './styles';
+import { Container, BookInfo, BookContainer, ChapterContainer } from './styles';
 import api from '../../../services/api';
 
 import BackButton from '../../../components/BackButton';
@@ -91,19 +91,18 @@ const LerBiblia: React.FC = () => {
             {book && book.book.name} {book && book.chapter.number}
           </h2>
 
-          <section>
-            <p>
-              <strong>Author do livro: </strong> {book && book.book.author}
-            </p>
-            <p>
-              <strong>Categoria: </strong> {book && book.book.group}
-            </p>
+          <BookInfo>
+            <dt>Author do livro:</dt>
+            <dd>{book && book.book.author}</dd>
+            <dt>Categoria:</dt>
+            <dd>{book && book.book.group}</dd>
             {numChapters && (
-              <p>
-                <strong>Total de Capítulos: </strong> {numChapters}
-              </p>
+              <>
+                <dt>Total de Capítulos:</dt>
+                <dd>{numChapters}</dd>
+              </>
             )}
-          </section>
+          </BookInfo>
 
           <BookContainer>
             {checkPrevUrl && (

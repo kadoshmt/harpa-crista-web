@@ -37,7 +37,7 @@ export const Hymn = styled.article`
 
         strong {
           font-size: 2rem;
-          font-weight: bold;
+          font-weight: normal;
           color: ${props => props.theme.colors.text};
         }
       }
