@@ -5,6 +5,11 @@ export const Container = styled.div`
     text-align: center;
     color: ${props => props.theme.colors.textSecondary};
   }
+  @media (max-width: 425px) {
+    h1 {
+      text-align: center;
+    }
+  }
 `;
 
 export const ResultInfo = styled.summary`
@@ -51,6 +56,13 @@ export const HymnContainer = styled.section`
       }
     }
   }
+
+  @media (max-width: 425px) {
+    align-items: flex-start;
+    a {
+      padding: 0.3rem;
+    }
+  }
 `;
 
 export const HymnBody = styled.article`
@@ -83,7 +95,6 @@ export const HymnBody = styled.article`
     -moz-column-count: 1; /* Firefox */
     column-count: 1; /* padrão */
     max-width: 42rem;
-    border: 1px solid red;
     margin: 0 auto;
     margin-top: 6rem;
   }

@@ -29,8 +29,7 @@ const Biblia: React.FC = () => {
       .get('books', {
         baseURL: 'https://bibleapi.co/api/',
         headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBBdWcgMjcgMjAyMCAxODo1MToxOCBHTVQrMDAwMC5rYWRvc2htdDJAZ21haWwuY29tIiwiaWF0IjoxNTk4NTU0Mjc4fQ.m5ruK1yd2OnOVy7whpFTZ368l3eHC7U7J1YdLwrBLLA',
+          Authorization: process.env.REACT_APP_BIBLE_API_KEY,
         },
       })
       .then(response => {

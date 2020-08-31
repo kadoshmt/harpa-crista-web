@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   return (
     <MainLayout menuItem="home" metaTitle="Harpa Cristã | Página Inicial">
       <h1>Página Inicial</h1>
-      <Container>Teste</Container>
+      <Container>Página Inicial</Container>
     </MainLayout>
   );
 };

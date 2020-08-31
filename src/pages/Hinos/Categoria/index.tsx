@@ -40,14 +40,11 @@ const Categoria: React.FC = () => {
       metaTitle={`Harpa Cristã | ${category && category.title}`}
     >
       <Container>
-        <hgroup>
-          <h1>Hinos por Categoria</h1>
-
-          <h2>{category && category.title}</h2>
-        </hgroup>
+        <h1>{category && category.title}</h1>
 
         <ResultInfo>
-          Foram encontradas {category && category.total_hymns} hinos para esta
+          Foram encontradas{' '}
+          <mark>{category && category.total_hymns} hinos</mark> para esta
           categoria.
         </ResultInfo>
 

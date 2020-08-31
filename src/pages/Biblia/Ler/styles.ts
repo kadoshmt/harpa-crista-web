@@ -15,6 +15,12 @@ export const Container = styled.div`
       border: 0;
     }
   }
+
+  @media (max-width: 425px) {
+    h1 {
+      text-align: center;
+    }
+  }
 `;
 
 export const BookInfo = styled.dl`
@@ -55,6 +61,13 @@ export const BookContainer = styled.div`
       }
     }
   }
+
+  @media (max-width: 610px) {
+    a {
+      margin-top: 0;
+      padding: 0.3rem;
+    }
+  }
 `;
 
 export const ChapterContainer = styled.div`
@@ -76,6 +89,10 @@ export const ChapterContainer = styled.div`
     &:first-child {
       margin: 0;
     }
+
+    em {
+      font-weight: bold;
+    }
   }
 
   blockquote {
@@ -89,7 +106,7 @@ export const ChapterContainer = styled.div`
     -moz-column-count: 1; /* Firefox */
     column-count: 1; /* padrão */
     max-width: 42rem;
-    border: 1px solid red;
+
     margin: 0 auto;
     margin-top: 6rem;
   }

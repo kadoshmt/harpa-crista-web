@@ -41,14 +41,13 @@ const Autor: React.FC = () => {
       metaTitle={`Harpa Cristã | ${author && author.name}`}
     >
       <Container>
-        <hgroup>
-          <h1>
-            {author && author.name} - {author && author.initials}
-          </h1>
-        </hgroup>
+        <h1>
+          {author && author.name} - {author && author.initials}
+        </h1>
 
         <ResultInfo>
-          Este autor(a) compôs/traduziu {author && author.total_hymns} hinos.
+          Este autor(a) compôs/traduziu{' '}
+          <mark>{author && author.total_hymns} hinos</mark>.
         </ResultInfo>
 
         <HymnsContainer>

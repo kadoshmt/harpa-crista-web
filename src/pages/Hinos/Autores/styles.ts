@@ -11,6 +11,7 @@ export const ResultInfo = styled.summary`
 
   mark {
     background: transparent;
+    font-weight: bold;
   }
 
   @media (max-width: 425px) {

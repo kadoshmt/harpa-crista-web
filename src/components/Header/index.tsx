@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import { Link } from 'react-router-dom';
 
@@ -32,12 +32,16 @@ const Header: React.FC<Props> = ({ menuItem }) => {
   const { theme, themeTitle, toggleTheme } = useTheme();
   const { width } = useWindowDimensions();
   const [hideSearchBarIcon, setHideSearchBarIcon] = useState(true);
-  const [searchBarDisplay, setSearchBarDisplay] = useState('');
+  const [searchBarDisplay, setSearchBarDisplay] = useState('none');
 
   useEffect(() => {
     setHideSearchBarIcon(width <= 580);
-    setSearchBarDisplay(width <= 580 ? 'hide' : 'block');
+    // setSearchBarDisplay(width <= 580 ? 'none' : 'block');
   }, [width]);
+
+  const handleSearchBar = useCallback(() => {
+    setSearchBarDisplay(state => (state === 'none' ? 'block' : 'none'));
+  }, []);
 
   return (
     <Container>
@@ -48,7 +52,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
 
         <Logo>HARPA CRISTÃ</Logo>
 
-        <SearchBar />
+        <SearchBar displayProp={searchBarDisplay} />
 
         <MenuContainer>
           <menu>
@@ -102,7 +106,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
 
         <HeaderContainerRight>
           {hideSearchBarIcon && (
-            <button type="submit">
+            <button type="button" onClick={handleSearchBar}>
               <FiSearch size={28} />
             </button>
           )}

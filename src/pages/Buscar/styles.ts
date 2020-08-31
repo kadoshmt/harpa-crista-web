@@ -12,4 +12,15 @@ export const ResultInfo = styled.div`
   margin-bottom: 2.5rem;
   border-bottom: 1px solid ${props => props.theme.colors.lines};
   padding-bottom: 1.5rem;
+
+  mark {
+    background: transparent;
+    font-weight: bold;
+  }
+
+  @media (max-width: 425px) {
+    border-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+  }
 `;

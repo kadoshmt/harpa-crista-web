@@ -50,13 +50,11 @@ const Buscar: React.FC = () => {
       metaTitle={`Harpa Cristã | Busca por ${words}`}
     >
       <Container>
-        <h1>Buscar</h1>
-
-        <h2>Resultado da Busca</h2>
+        <h1>Resultado da Busca</h1>
 
         <ResultInfo>
           Foram encontradas {hymns.length} hinos para o termo{' '}
-          <strong>&ldquo;{words}&ldquo;</strong>.
+          <mark>&ldquo;{words}&ldquo;</mark>.
         </ResultInfo>
 
         <div>

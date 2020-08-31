@@ -17,7 +17,7 @@ export const StyledBurger = styled.div`
 
   /* Color/shape of burger icon bars */
   .bm-burger-bars {
-    background: #373a47;
+    background: ${props => props.theme.colors.textSecondary};
   }
 
   /* Color/shape of burger icon bars on hover*/
@@ -33,7 +33,7 @@ export const StyledBurger = styled.div`
 
   /* Color/shape of close button cross */
   .bm-cross {
-    background: #bdc3c7;
+    background: ${props => props.theme.colors.textSecondary};
   }
 
   /*
@@ -47,8 +47,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
   /* General sidebar styles */
   .bm-menu {
-    background: ${props => props.theme.colors.textSecondary};
-    padding: 2.5em 1.5em 0;
+    background: ${props => props.theme.colors.backgroundSecondary};
+    padding: 1.5em 0.5em 0;
     font-size: 1.15em;
   }
 
@@ -59,14 +59,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
   /* Wrapper for item list */
   .bm-item-list {
-    color: #b8b7ad;
-    padding: 2rem;
+    color: ${props => props.theme.colors.primary};
+    padding: 1.8rem;
   }
 
   /* Individual item */
   .bm-item {
     display: inline-block;
-    color: #fff;
+    color: ${props => props.theme.colors.textSecondary};
     padding: 1.5rem 0;
     text-decoration: none;
     font-size: ${props => props.theme.font.sizes.xl};

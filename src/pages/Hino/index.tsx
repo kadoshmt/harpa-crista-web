@@ -32,6 +32,7 @@ const Hino: React.FC = () => {
   useEffect(() => {
     api.get(`/hymns/${id}`).then(response => {
       setHymn(response.data);
+      window.scrollTo(0, 0); // fix: render page on top for mobile
     });
 
     const prevId = Number(id) - 1;
@@ -59,12 +60,10 @@ const Hino: React.FC = () => {
       metaTitle={`Harpa Cristã | ${hymn && hymn.title}`}
     >
       <Container>
-        <h1>Hino</h1>
-
-        <h2>
+        <h1>
           {hymn && hymn.num_hymn.toString().padStart(3, '0')} -{' '}
           {hymn && hymn.title}
-        </h2>
+        </h1>
 
         <ResultInfo>
           {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}

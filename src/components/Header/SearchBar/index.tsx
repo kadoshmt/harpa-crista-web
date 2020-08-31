@@ -10,7 +10,7 @@ interface Props {
   displayProp?: string;
 }
 
-const SearchBar: React.FC<Props> = ({ displayProp = 'hide' }) => {
+const SearchBar: React.FC<Props> = ({ displayProp = 'none' }) => {
   const [words, setWords] = useState<string>('');
   const { width } = useWindowDimensions();
   const [searchBarDisplay, setSearchBarDisplay] = useState(displayProp);
@@ -21,6 +21,7 @@ const SearchBar: React.FC<Props> = ({ displayProp = 'hide' }) => {
     async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
       e.preventDefault();
 
+      setSearchBarDisplay('none');
       history.push(`/buscar?termo=${words}`);
     },
     [history, words],

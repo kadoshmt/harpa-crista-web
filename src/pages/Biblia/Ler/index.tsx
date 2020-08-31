@@ -47,21 +47,20 @@ const LerBiblia: React.FC = () => {
       .get(`verses/acf/${abbrev}/${chapter}`, {
         baseURL: 'https://bibleapi.co/api/',
         headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBBdWcgMjcgMjAyMCAxODo1MToxOCBHTVQrMDAwMC5rYWRvc2htdDJAZ21haWwuY29tIiwiaWF0IjoxNTk4NTU0Mjc4fQ.m5ruK1yd2OnOVy7whpFTZ368l3eHC7U7J1YdLwrBLLA',
+          Authorization: process.env.REACT_APP_API_URL,
         },
       })
       .then(response => {
         setBook(response.data);
         setIsLoaded(true);
+        window.scrollTo(0, 0); // fix: render page on top for mobile
       });
 
     api
       .get(`books/${abbrev}`, {
         baseURL: 'https://bibleapi.co/api/',
         headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlRodSBBdWcgMjcgMjAyMCAxODo1MToxOCBHTVQrMDAwMC5rYWRvc2htdDJAZ21haWwuY29tIiwiaWF0IjoxNTk4NTU0Mjc4fQ.m5ruK1yd2OnOVy7whpFTZ368l3eHC7U7J1YdLwrBLLA',
+          Authorization: process.env.REACT_APP_BIBLE_API_KEY,
         },
       })
       .then(response => {
@@ -82,10 +81,10 @@ const LerBiblia: React.FC = () => {
       menuItem="biblia"
       metaTitle={`Harpa Cristã | Bíblia - ${book && book.book.name}`}
     >
-      <h1>Biblia Sagrada</h1>
       {!isLoaded && <Loading />}
       {isLoaded && (
         <Container>
+          <h1>Biblia Sagrada</h1>
           <h2>
             {' '}
             {book && book.book.name} {book && book.chapter.number}
