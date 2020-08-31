@@ -61,6 +61,15 @@ export const HymnContainer = styled.section`
     align-items: flex-start;
     a {
       padding: 0.3rem;
+
+      top: 84px;
+      &.prevButton {
+        left: 1rem;
+      }
+
+      &.nextButton {
+        right: 1rem;
+      }
     }
   }
 `;
@@ -97,5 +106,13 @@ export const HymnBody = styled.article`
     max-width: 42rem;
     margin: 0 auto;
     margin-top: 6rem;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 1rem;
+    p {
+      text-align: center;
+      font-size: ${props => props.theme.font.sizes.xl};
+    }
   }
 `;

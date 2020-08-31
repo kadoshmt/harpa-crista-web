@@ -10,4 +10,8 @@ export const Container = styled.footer`
   display: flex;
   justify-content: center;
   align-content: center;
+
+  @media (max-width: 425px) {
+    min-height: 100px;
+  }
 `;

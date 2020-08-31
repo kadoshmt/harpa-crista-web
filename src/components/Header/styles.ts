@@ -97,3 +97,19 @@ export const HeaderContainerRight = styled.div`
     margin-right: 2rem;
   }
 `;
+
+export const SwitchLeftIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 2;
+`;
+
+export const SwitchRightIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 2;
+`;

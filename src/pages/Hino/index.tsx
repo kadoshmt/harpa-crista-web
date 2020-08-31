@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 import BackButton from '../../components/BackButton';
 import MainLayout from '../../layouts/MainLayout';
+import Loading from '../../components/Loading';
 
 interface Authors {
   initials: string;
@@ -26,12 +27,14 @@ const Hino: React.FC = () => {
   const [hymn, setHymn] = useState<Hymn>();
   const [prevHymn, setPrevHymn] = useState<Hymn>();
   const [nextHymn, setNextHymn] = useState<Hymn>();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
     api.get(`/hymns/${id}`).then(response => {
       setHymn(response.data);
+      setIsLoaded(true);
       window.scrollTo(0, 0); // fix: render page on top for mobile
     });
 
@@ -59,33 +62,38 @@ const Hino: React.FC = () => {
       menuItem="hinos"
       metaTitle={`Harpa Cristã | ${hymn && hymn.title}`}
     >
-      <Container>
-        <h1>
-          {hymn && hymn.num_hymn.toString().padStart(3, '0')} -{' '}
-          {hymn && hymn.title}
-        </h1>
+      {!isLoaded && <Loading />}
+      {isLoaded && (
+        <Container>
+          <h1>
+            {hymn && hymn.num_hymn.toString().padStart(3, '0')} -{' '}
+            {hymn && hymn.title}
+          </h1>
 
-        <ResultInfo>
-          {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
-        </ResultInfo>
+          <ResultInfo>
+            {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
+          </ResultInfo>
 
-        <HymnContainer>
-          {prevHymn && (
-            <Link to={prevUrl} className="prevButton">
-              <FiChevronLeft size={30} />
-            </Link>
-          )}
+          <HymnContainer>
+            {prevHymn && (
+              <Link to={prevUrl} className="prevButton">
+                <FiChevronLeft size={30} />
+              </Link>
+            )}
 
-          {hymn && <HymnBody dangerouslySetInnerHTML={{ __html: hymn.body }} />}
+            {hymn && (
+              <HymnBody dangerouslySetInnerHTML={{ __html: hymn.body }} />
+            )}
 
-          {nextHymn && (
-            <Link to={nextUrl} className="nextButton">
-              <FiChevronRight size={30} />
-            </Link>
-          )}
-        </HymnContainer>
-        <BackButton />
-      </Container>
+            {nextHymn && (
+              <Link to={nextUrl} className="nextButton">
+                <FiChevronRight size={30} />
+              </Link>
+            )}
+          </HymnContainer>
+          <BackButton />
+        </Container>
+      )}
     </MainLayout>
   );
 };

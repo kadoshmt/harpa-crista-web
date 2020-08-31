@@ -47,7 +47,7 @@ const LerBiblia: React.FC = () => {
       .get(`verses/acf/${abbrev}/${chapter}`, {
         baseURL: 'https://bibleapi.co/api/',
         headers: {
-          Authorization: process.env.REACT_APP_API_URL,
+          Authorization: process.env.REACT_APP_BIBLE_API_KEY,
         },
       })
       .then(response => {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
-import { FiHome, FiSearch } from 'react-icons/fi';
+import { FiHome, FiSearch, FiSun, FiMoon } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 // import { IoMdMusicalNotes, IoMdMusicalNote, IoMdBook } from 'react-icons/io';
 
@@ -19,6 +19,8 @@ import {
   MenuContainer,
   MenuBurguerContainer,
   HeaderContainerRight,
+  SwitchLeftIcon,
+  SwitchRightIcon,
 } from './styles';
 import Burger from './Burguer';
 import SearchBar from './SearchBar';
@@ -110,17 +112,30 @@ const Header: React.FC<Props> = ({ menuItem }) => {
               <FiSearch size={28} />
             </button>
           )}
-
+          {/* eslint-disable */}
           <Switch
             onChange={toggleTheme}
             checked={themeTitle === 'light'}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={20}
-            width={34}
+            checkedIcon={
+              (<SwitchRightIcon>
+                <FiSun size={16} color={theme.colors.textInPrimary} />
+              </SwitchRightIcon>
+              )
+            }
+            uncheckedIcon={(
+              <SwitchLeftIcon>
+                {' '}
+                <FiMoon size={16} />{' '}
+              </SwitchLeftIcon>
+            )}
+            height={24}
+            width={50}
             offColor={shade(0.3, theme.colors.textSecondary)}
             onColor={theme.colors.primary}
+            
+            activeBoxShadow="0px 0px 1px 10px rgba(0, 0, 0, 0.2)"
           />
+          {/* eslint-enable */}
         </HeaderContainerRight>
       </HeaderContent>
     </Container>

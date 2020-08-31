@@ -6,6 +6,7 @@ import api from '../../services/api';
 
 import HymnsList from '../../components/HymnsList';
 import MainLayout from '../../layouts/MainLayout';
+import Loading from '../../components/Loading';
 
 interface Hymn {
   id: number;
@@ -24,6 +25,7 @@ interface Category {
 
 const Buscar: React.FC = () => {
   const [hymns, setHymns] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const query = new URLSearchParams(useLocation().search);
 
@@ -41,6 +43,8 @@ const Buscar: React.FC = () => {
       })
       .then(response => {
         setHymns(response.data);
+        setIsLoaded(true);
+        window.scrollTo(0, 0); // fix: render page on top for mobile
       });
   }, [page, words]);
 
@@ -49,18 +53,21 @@ const Buscar: React.FC = () => {
       menuItem="hinos"
       metaTitle={`Harpa Cristã | Busca por ${words}`}
     >
-      <Container>
-        <h1>Resultado da Busca</h1>
+      {!isLoaded && <Loading />}
+      {isLoaded && (
+        <Container>
+          <h1>Resultado da Busca</h1>
 
-        <ResultInfo>
-          Foram encontradas {hymns.length} hinos para o termo{' '}
-          <mark>&ldquo;{words}&ldquo;</mark>.
-        </ResultInfo>
+          <ResultInfo>
+            Foram encontradas {hymns.length} hinos para o termo{' '}
+            <mark>&ldquo;{words}&ldquo;</mark>.
+          </ResultInfo>
 
-        <div>
-          <HymnsList hymns={hymns} />
-        </div>
-      </Container>
+          <div>
+            <HymnsList hymns={hymns} />
+          </div>
+        </Container>
+      )}
     </MainLayout>
   );
 };

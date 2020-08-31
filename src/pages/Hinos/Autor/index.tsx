@@ -7,6 +7,7 @@ import api from '../../../services/api';
 import HymnsList from '../../../components/HymnsList';
 import BackButton from '../../../components/BackButton';
 import MainLayout from '../../../layouts/MainLayout';
+import Loading from '../../../components/Loading';
 
 interface Hymn {
   id: number;
@@ -26,12 +27,14 @@ interface Author {
 
 const Autor: React.FC = () => {
   const [author, setAuthor] = useState<Author>();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const { id } = useParams();
 
   useEffect(() => {
     api.get(`/hymns-authors/${id}`).then(response => {
       setAuthor(response.data);
+      setIsLoaded(true);
     });
   }, [id]);
 
@@ -40,21 +43,24 @@ const Autor: React.FC = () => {
       menuItem="hinos"
       metaTitle={`Harpa Cristã | ${author && author.name}`}
     >
-      <Container>
-        <h1>
-          {author && author.name} - {author && author.initials}
-        </h1>
+      {!isLoaded && <Loading />}
+      {isLoaded && (
+        <Container>
+          <h1>
+            {author && author.name} - {author && author.initials}
+          </h1>
 
-        <ResultInfo>
-          Este autor(a) compôs/traduziu{' '}
-          <mark>{author && author.total_hymns} hinos</mark>.
-        </ResultInfo>
+          <ResultInfo>
+            Este autor(a) compôs/traduziu{' '}
+            <mark>{author && author.total_hymns} hinos</mark>.
+          </ResultInfo>
 
-        <HymnsContainer>
-          {author && <HymnsList hymns={author.hymns} author={author.name} />}
-        </HymnsContainer>
-        <BackButton />
-      </Container>
+          <HymnsContainer>
+            {author && <HymnsList hymns={author.hymns} author={author.name} />}
+          </HymnsContainer>
+          <BackButton />
+        </Container>
+      )}
     </MainLayout>
   );
 };
