@@ -1,11 +1,11 @@
 export default {
   title: 'light',
   colors: {
-    primaryLight: '#ff9100',
-    primary: '#ff6000',
-    primaryDark: '#dd3800',
+    primaryLight: '#f6b35a',
+    primary: '#ff9100',
+    primaryDark: '#ff6000',
 
-    text: '#111111',
+    text: '#252525',
     textSecondary: '#757575',
     textInPrimary: '#ffffff',
 

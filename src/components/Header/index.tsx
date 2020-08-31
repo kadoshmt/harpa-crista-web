@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Link } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
-import { FiHome } from 'react-icons/fi';
+import { FiHome, FiSearch } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 // import { IoMdMusicalNotes, IoMdMusicalNote, IoMdBook } from 'react-icons/io';
 
@@ -18,9 +18,11 @@ import {
   Logo,
   MenuContainer,
   MenuBurguerContainer,
+  HeaderContainerRight,
 } from './styles';
 import Burger from './Burguer';
 import SearchBar from './SearchBar';
+import useWindowDimensions from '../../utils/useWindowDimensions';
 
 interface Props {
   menuItem?: 'home' | 'hinos' | 'biblia' | undefined;
@@ -28,6 +30,14 @@ interface Props {
 
 const Header: React.FC<Props> = ({ menuItem }) => {
   const { theme, themeTitle, toggleTheme } = useTheme();
+  const { width } = useWindowDimensions();
+  const [hideSearchBarIcon, setHideSearchBarIcon] = useState(true);
+  const [searchBarDisplay, setSearchBarDisplay] = useState('');
+
+  useEffect(() => {
+    setHideSearchBarIcon(width <= 580);
+    setSearchBarDisplay(width <= 580 ? 'hide' : 'block');
+  }, [width]);
 
   return (
     <Container>
@@ -90,16 +100,24 @@ const Header: React.FC<Props> = ({ menuItem }) => {
           </menu>
         </MenuContainer>
 
-        <Switch
-          onChange={toggleTheme}
-          checked={themeTitle === 'light'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={20}
-          width={34}
-          offColor={shade(0.3, theme.colors.textSecondary)}
-          onColor={theme.colors.primary}
-        />
+        <HeaderContainerRight>
+          {hideSearchBarIcon && (
+            <button type="submit">
+              <FiSearch size={28} />
+            </button>
+          )}
+
+          <Switch
+            onChange={toggleTheme}
+            checked={themeTitle === 'light'}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            width={34}
+            offColor={shade(0.3, theme.colors.textSecondary)}
+            onColor={theme.colors.primary}
+          />
+        </HeaderContainerRight>
       </HeaderContent>
     </Container>
   );

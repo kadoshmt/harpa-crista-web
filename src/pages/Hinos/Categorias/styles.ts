@@ -8,6 +8,16 @@ export const ResultInfo = styled.summary`
   margin-bottom: 2.5rem;
   border-bottom: 1px solid ${props => props.theme.colors.lines};
   padding-bottom: 1rem;
+
+  mark {
+    background: transparent;
+  }
+
+  @media (max-width: 425px) {
+    border-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+  }
 `;
 
 export const CategoriesContainer = styled.section`
@@ -35,5 +45,19 @@ export const CategoriesContainer = styled.section`
     -webkit-column-count: 1; /* Chrome, Safari, Opera */
     -moz-column-count: 1; /* Firefox */
     column-count: 1; /* padrão */
+  }
+
+  @media (max-width: 425px) {
+    a {
+      border-top: 1px solid ${props => props.theme.colors.lines};
+      display: block;
+    }
+  }
+`;
+
+export const Category = styled.article`
+  @media (max-width: 425px) {
+    padding: 1.2rem 0;
+    font-size: ${props => props.theme.font.sizes.xl};
   }
 `;

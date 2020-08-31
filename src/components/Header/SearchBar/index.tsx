@@ -1,12 +1,19 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import { FiSearch } from 'react-icons/fi';
 
 import { useHistory } from 'react-router-dom';
 import { SearchContainer } from './styles';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
 
-const SearchBar: React.FC = () => {
+interface Props {
+  displayProp?: string;
+}
+
+const SearchBar: React.FC<Props> = ({ displayProp = 'hide' }) => {
   const [words, setWords] = useState<string>('');
+  const { width } = useWindowDimensions();
+  const [searchBarDisplay, setSearchBarDisplay] = useState(displayProp);
 
   const history = useHistory();
 
@@ -18,8 +25,13 @@ const SearchBar: React.FC = () => {
     },
     [history, words],
   );
+
+  useEffect(() => {
+    setSearchBarDisplay(width > 580 ? 'block' : displayProp);
+  }, [width, displayProp]);
+
   return (
-    <SearchContainer>
+    <SearchContainer style={{ display: searchBarDisplay }}>
       <form onSubmit={handleSearch}>
         <div>
           <input

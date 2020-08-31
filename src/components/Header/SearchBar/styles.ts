@@ -67,5 +67,12 @@ export const SearchContainer = styled.div`
 
   @media (max-width: 580px) {
     display: none;
+    position: absolute;
+    top: 48px;
+    width: 100vw;
+    height: 80px;
+    padding: 2rem;
+    background: ${props => props.theme.colors.backgroundSecondary};
+    border-bottom: 1px solid ${props => props.theme.colors.lines};
   }
 `;

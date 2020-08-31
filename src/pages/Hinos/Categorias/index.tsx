@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, ResultInfo, CategoriesContainer } from './styles';
+import { Container, ResultInfo, CategoriesContainer, Category } from './styles';
 import api from '../../../services/api';
 
 import HymnsMenu from '../../../components/HymnsMenu';
@@ -30,7 +30,8 @@ const Categorias: React.FC = () => {
         <HymnsMenu menuItem="categorias" />
 
         <ResultInfo>
-          Foram encontradas {categories && categories.length} categorias.
+          Foram encontradas{' '}
+          <mark>{categories && categories.length} categorias</mark>.
         </ResultInfo>
         <CategoriesContainer>
           {categories.map((category: Categories) => (
@@ -38,7 +39,7 @@ const Categorias: React.FC = () => {
               key={category.id}
               to={`/hinos/categoria/${category.id}/${category.slug}`}
             >
-              <div>{category.title}</div>
+              <Category>{category.title}</Category>
             </Link>
           ))}
         </CategoriesContainer>

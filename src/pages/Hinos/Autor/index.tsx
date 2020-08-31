@@ -42,11 +42,9 @@ const Autor: React.FC = () => {
     >
       <Container>
         <hgroup>
-          <h1>Hinos por Autores</h1>
-
-          <h2>
+          <h1>
             {author && author.name} - {author && author.initials}
-          </h2>
+          </h1>
         </hgroup>
 
         <ResultInfo>

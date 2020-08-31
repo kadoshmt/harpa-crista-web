@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, ResultInfo, AuthorsContainer } from './styles';
+import { Container, ResultInfo, AuthorsContainer, Author } from './styles';
 import api from '../../../services/api';
 
 import HymnsMenu from '../../../components/HymnsMenu';
@@ -31,7 +31,7 @@ const Autores: React.FC = () => {
         <h1>Autores e Tradutores</h1>
         <HymnsMenu menuItem="autores" />
         <ResultInfo>
-          Foram encontrados {authors && authors.length} autores.
+          Foram encontrados <mark>{authors && authors.length} autores</mark>.
         </ResultInfo>
         <AuthorsContainer>
           {authors.map((author: Author) => (
@@ -39,9 +39,9 @@ const Autores: React.FC = () => {
               key={author.id}
               to={`/hinos/autor/${author.id}/${author.slug}`}
             >
-              <div>
+              <Author>
                 {author.name} - {author.initials}
-              </div>
+              </Author>
             </Link>
           ))}
         </AuthorsContainer>

@@ -26,6 +26,7 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 export const Logo = styled.div`
@@ -82,5 +83,17 @@ export const MenuBurguerContainer = styled.div`
   height: 64px;
   @media (max-width: 768px) {
     display: block;
+  }
+`;
+
+export const HeaderContainerRight = styled.div`
+  display: flex;
+  align-items: center;
+  button {
+    background: transparent;
+    color: ${props => props.theme.colors.textSecondary};
+    outline: 0;
+    border: 0;
+    margin-right: 2rem;
   }
 `;

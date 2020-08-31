@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  h2 {
+  h1 {
     margin-top: 2rem;
   }
 
   @media (max-width: 425px) {
-    h2 {
+    h1 {
       text-align: center;
     }
   }
