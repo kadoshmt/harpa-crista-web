@@ -15,6 +15,8 @@ const SearchBar: React.FC<Props> = ({ displayProp = 'none' }) => {
   const { width } = useWindowDimensions();
   const [searchBarDisplay, setSearchBarDisplay] = useState(displayProp);
 
+  const minWidthSearchBar = 600;
+
   const history = useHistory();
 
   const handleSearch = useCallback(
@@ -28,7 +30,7 @@ const SearchBar: React.FC<Props> = ({ displayProp = 'none' }) => {
   );
 
   useEffect(() => {
-    setSearchBarDisplay(width > 580 ? 'block' : displayProp);
+    setSearchBarDisplay(width > minWidthSearchBar ? 'block' : displayProp);
   }, [width, displayProp]);
 
   return (
@@ -38,13 +40,13 @@ const SearchBar: React.FC<Props> = ({ displayProp = 'none' }) => {
           <input
             type="text"
             name=""
-            placeholder="Que hino você está procurando?"
+            placeholder="Que hino você procura?"
             onChange={e => setWords(e.target.value)}
           />
-          <button type="submit">
-            <FiSearch size={20} />
-          </button>
         </div>
+        <button type="submit">
+          <FiSearch size={20} />
+        </button>
       </form>
     </SearchContainer>
   );

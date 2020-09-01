@@ -36,9 +36,11 @@ const Header: React.FC<Props> = ({ menuItem }) => {
   const [hideSearchBarIcon, setHideSearchBarIcon] = useState(true);
   const [searchBarDisplay, setSearchBarDisplay] = useState('none');
 
+  const minWidthSearchBar = 600;
+
   useEffect(() => {
-    setHideSearchBarIcon(width <= 580);
-    // setSearchBarDisplay(width <= 580 ? 'none' : 'block');
+    setHideSearchBarIcon(width <= minWidthSearchBar);
+    // setSearchBarDisplay(width <= minWidthSearchBar ? 'none' : 'block');
   }, [width]);
 
   const handleSearchBar = useCallback(() => {

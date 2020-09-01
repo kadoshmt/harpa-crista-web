@@ -6,7 +6,6 @@ export const Container = styled.header`
   padding: 16px;
   background: ${props => props.theme.colors.background};
   border-bottom: 1px solid ${props => props.theme.colors.lines};
-  font-size: 2.8rem;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -31,10 +30,19 @@ export const HeaderContent = styled.div`
 
 export const Logo = styled.div`
   font-weight: bold;
+  min-width: 170px;
+  font-size: 2.4rem;
+  justify-self: flex-start;
+
+  @media (max-width: 768px) {
+    /* margin-left: 30px; */
+    margin-inline-start: 30px;
+  }
 `;
 
 export const MenuContainer = styled.nav`
   display: block;
+  margin-right: 5rem;
 
   menu {
     list-style: none;
@@ -73,6 +81,10 @@ export const MenuContainer = styled.nav`
     margin-left: 20px;
   }
 
+  @media (max-width: 1030px) {
+    margin-right: 2rem;
+  }
+
   @media (max-width: 768px) {
     display: none;
   }
@@ -81,6 +93,7 @@ export const MenuContainer = styled.nav`
 export const MenuBurguerContainer = styled.div`
   display: none;
   height: 64px;
+
   @media (max-width: 768px) {
     display: block;
   }
@@ -89,6 +102,7 @@ export const MenuBurguerContainer = styled.div`
 export const HeaderContainerRight = styled.div`
   display: flex;
   align-items: center;
+
   button {
     background: transparent;
     color: ${props => props.theme.colors.textSecondary};

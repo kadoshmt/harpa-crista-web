@@ -22,10 +22,6 @@ export const Container = styled.main`
     padding-left: 1rem; */    
   }
 
-  @media (max-width: 510px) {
-    width: 90%;
-  }
-
   @media (max-width: 425px) {
     width: 100%;
     border: 0;

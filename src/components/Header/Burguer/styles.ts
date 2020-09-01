@@ -12,7 +12,11 @@ export const StyledBurger = styled.div`
     width: 30px;
     height: 28px;
     top: 20px;
-    left: 16px;
+    left: 0px;
+
+    @media (max-width: 425px) {
+      left: 16px;
+    }
   }
 
   /* Color/shape of burger icon bars */
@@ -43,6 +47,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .bm-menu-wrap {
     position: fixed;
     height: 100%;
+    margin-left: -14px; /* Fix always visible partial on side */
   }
 
   /* General sidebar styles */
