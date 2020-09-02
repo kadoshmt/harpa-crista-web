@@ -57,18 +57,21 @@ const Hino: React.FC = () => {
     return nextHymn ? `/hino/${nextHymn.num_hymn}/${nextHymn.slug}` : '';
   }, [nextHymn]);
 
+  const titleWithNumber = useMemo(() => {
+    return hymn
+      ? `${hymn.num_hymn.toString().padStart(3, '0')} - ${hymn.title}`
+      : '';
+  }, [hymn]);
+
   return (
     <MainLayout
       menuItem="hinos"
-      metaTitle={`Harpa Cristã | ${hymn && hymn.title}`}
+      metaTitle={`Harpa Cristã | ${titleWithNumber}`}
     >
       {!isLoaded && <Loading />}
       {isLoaded && (
         <Container>
-          <h1>
-            {hymn && hymn.num_hymn.toString().padStart(3, '0')} -{' '}
-            {hymn && hymn.title}
-          </h1>
+          <h1>{titleWithNumber}</h1>
 
           <ResultInfo>
             {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}

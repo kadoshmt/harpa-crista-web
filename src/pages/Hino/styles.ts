@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  h1 {
+    text-align: center;
+  }
+
   h2 {
     text-align: center;
     color: ${props => props.theme.colors.textSecondary};
-  }
-  @media (max-width: 425px) {
-    h1 {
-      text-align: center;
-    }
   }
 `;
 
