@@ -17,28 +17,19 @@ interface Hymn {
 
 interface Props {
   hymns: Hymn[];
-  author?: string;
 }
 
-const HymnsList: React.FC<Props> = ({
-  hymns,
-  author = 'Autor Desconhecido',
-}) => {
-  // const { number, title, author, link }
-  // const { theme, themeTitle } = useTheme();
+const HymnsListOrdered: React.FC<Props> = ({ hymns }) => {
   return (
     <Container>
       {hymns &&
-        hymns.map((hymn: Hymn) => (
+        hymns.map((hymn: Hymn, index: number) => (
           <Hymn key={hymn.id}>
             <Link to={`/hino/${hymn.num_hymn}/${hymn.slug}`}>
               <p>
-                <span>{String(hymn.num_hymn).padStart(3, '0')}</span>
+                <em>{index + 1}</em>
                 <div>
                   <strong>{hymn.title}</strong>
-                  {hymn.authors && hymn.authors.length > 0
-                    ? hymn.authors[0].name
-                    : author}
                 </div>
               </p>
             </Link>
@@ -48,4 +39,4 @@ const HymnsList: React.FC<Props> = ({
   );
 };
 
-export default HymnsList;
+export default HymnsListOrdered;

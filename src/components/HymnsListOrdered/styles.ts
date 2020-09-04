@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Container = styled.section`
   display: -webkit-flex; /* Safari */
   display: flex; /* Standard syntax */
-  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 export const Hymn = styled.article`
-  width: 33.3%;
+  width: 40rem;
 
   a {
     text-decoration: none;
@@ -16,14 +16,15 @@ export const Hymn = styled.article`
 
     p {
       display: flex;
-      padding: 1rem;
+      padding: 0.2rem 0;
       color: ${props => props.theme.colors.textSecondary};
 
-      span {
+      em {
         font-weight: bold;
         color: ${props => props.theme.colors.lines};
-        font-size: 4.6rem;
-        min-width: 8rem;
+        font-size: 2.8rem;
+        min-width: 3.5rem;
+        text-align: right;
       }
 
       div {
@@ -44,9 +45,9 @@ export const Hymn = styled.article`
     }
 
     & :hover {
-      background: ${props => props.theme.colors.inputBackground};
+      /* background: ${props => props.theme.colors.inputBackground}; */
 
-      span,
+      em,
       div,
       strong {
         color: ${props => props.theme.colors.primary} !important;
