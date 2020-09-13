@@ -4,7 +4,6 @@ import { slide as Menu } from 'react-burger-menu';
 import { FiHome } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 import { StyledBurger } from './styles';
-import BackButton from '../../BackButton';
 
 const Burger: React.FC = () => {
   return (
