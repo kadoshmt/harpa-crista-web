@@ -10,7 +10,8 @@ import { FaMusic, FaBookOpen } from 'react-icons/fa';
 
 import Switch from 'react-switch';
 import { shade } from 'polished';
-import logoImg from '../../assets/logo.png';
+import logoLight from '../../assets/logo.png';
+import logoDark from '../../assets/logo-white.png';
 import { useTheme } from '../../hooks/theme';
 
 import {
@@ -57,7 +58,10 @@ const Header: React.FC<Props> = ({ menuItem }) => {
 
         <Logo>
           <Link to="/">
-            <img src={logoImg} alt="Harpa Cristã" />
+            {themeTitle === 'light' && (
+              <img src={logoLight} alt="Harpa Cristã" />
+            )}
+            {themeTitle === 'dark' && <img src={logoDark} alt="Harpa Cristã" />}
           </Link>
         </Logo>
 
