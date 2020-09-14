@@ -10,6 +10,7 @@ import { FaMusic, FaBookOpen } from 'react-icons/fa';
 
 import Switch from 'react-switch';
 import { shade } from 'polished';
+import logoImg from '../../assets/logo.png';
 import { useTheme } from '../../hooks/theme';
 
 import {
@@ -54,7 +55,11 @@ const Header: React.FC<Props> = ({ menuItem }) => {
           <Burger />
         </MenuBurguerContainer>
 
-        <Logo>HARPA CRISTÃ</Logo>
+        <Logo>
+          <Link to="/">
+            <img src={logoImg} alt="Harpa Cristã" />
+          </Link>
+        </Logo>
 
         <SearchBar displayProp={searchBarDisplay} />
 
