@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 import Route from './Route';
-import Home from '../pages/Home';
+// import Home from '../pages/Home';
 import Hinos from '../pages/Hinos';
 import Hino from '../pages/Hino';
 import Buscar from '../pages/Buscar';
@@ -17,7 +17,7 @@ import Profile from '../pages/Profile';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" component={Home} exact />
+    <Route path="/" component={Hinos} exact />
     <Route path="/biblia/:testament/:abbrev/:chapter" component={LerBiblia} />
     <Route path="/biblia" component={Biblia} exact />
     <Route path="/hinos" component={Hinos} exact />

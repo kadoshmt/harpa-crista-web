@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // import { FiHome, FiBookOpen } from 'react-icons/fi';
 // import { FaHome, FaMicrophoneAlt, FaMusic, FaBookOpen } from 'react-icons/fa';
-import { FiHome, FiSearch, FiSun, FiMoon } from 'react-icons/fi';
+import { FiSearch, FiSun, FiMoon } from 'react-icons/fi';
 import { FaMusic, FaBookOpen } from 'react-icons/fa';
 // import { IoMdMusicalNotes, IoMdMusicalNote, IoMdBook } from 'react-icons/io';
 
@@ -60,7 +60,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
 
         <MenuContainer>
           <menu>
-            <li>
+            {/* <li>
               <Link to="/" className={menuItem === 'home' ? 'activeMenu' : ''}>
                 <FiHome
                   color={
@@ -72,7 +72,7 @@ const Header: React.FC<Props> = ({ menuItem }) => {
                 />
                 <span>Início</span>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/biblia"

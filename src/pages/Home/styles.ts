@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   margin-top: 2rem;
+
+  > div {
+    display: grid;
+    grid-auto-flow: column;
+    grid: 200px / 1fr 1fr;
+  }
 `;
 export const FirstLine = styled.section`
   display: flex;
