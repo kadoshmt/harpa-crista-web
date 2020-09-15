@@ -121,5 +121,9 @@ export const HymnBody = styled.article`
       text-align: center;
       /* font-size: ${props => props.theme.font.sizes.xl}; */
     }
+
+    blockquote {
+      margin-left: 0;
+    }
   }
 `;

@@ -175,13 +175,13 @@ const Hino: React.FC = () => {
       newVariable
         .share({
           title: hymn?.title,
-          text: 'Some text.',
+          text: `Hino nº ${titleWithNumber}`,
           url: window.location.pathname,
         })
         .then(() => console.log('Successful share'))
-        .catch((error: Error) => console.log('Error sharing', error));
+        .catch((error: Error) => console.log('Error sharing hymn', error));
     }
-  }, [hymn]);
+  }, [hymn, titleWithNumber]);
 
   return (
     <>
