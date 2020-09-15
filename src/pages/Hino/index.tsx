@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { Link, useParams, useHistory } from 'react-router-dom';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { Container, ResultInfo, HymnContainer, HymnBody } from './styles';
@@ -8,6 +8,7 @@ import api from '../../services/api';
 import BackButton from '../../components/BackButton';
 import MainLayout from '../../layouts/MainLayout';
 import Loading from '../../components/Loading';
+import HymnFooter from '../../components/HymnFooter';
 
 interface Authors {
   initials: string;
@@ -23,19 +24,48 @@ interface Hymn {
   authors: Authors[];
 }
 
+interface FavoriteHymn {
+  id: number;
+  title: string;
+  slug: string;
+  author: string;
+}
+
 const Hino: React.FC = () => {
   const [hymn, setHymn] = useState<Hymn>();
   const [prevHymn, setPrevHymn] = useState<Hymn>();
   const [nextHymn, setNextHymn] = useState<Hymn>();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const [fontSize, setFontSize] = useState(2.0);
 
   const { id } = useParams();
+
+  const { push } = useHistory();
 
   useEffect(() => {
     api.get(`/hymns/${id}`).then(response => {
       setHymn(response.data);
       setIsLoaded(true);
+      setIsFavorited(false);
       window.scrollTo(0, 0); // fix: render page on top for mobile
+
+      const favoritesData = sessionStorage.getItem('@HarpaCrista:favorites')
+        ? sessionStorage.getItem('@HarpaCrista:favorites')
+        : localStorage.getItem('@HarpaCrista:favorites');
+
+      if (favoritesData) {
+        const favorites = JSON.parse(favoritesData);
+        const favorite = favorites.filter((item: FavoriteHymn) => {
+          return item.id === response.data.id;
+        });
+
+        console.log(favorite);
+
+        if (favorite && favorite.length === 1) {
+          setIsFavorited(true);
+        }
+      }
     });
 
     const prevId = Number(id) - 1;
@@ -63,41 +93,147 @@ const Hino: React.FC = () => {
       : '';
   }, [hymn]);
 
+  const increaseText = useCallback(() => {
+    if (fontSize < 3) setFontSize(fontSize + 0.2);
+  }, [fontSize]);
+
+  const decreaseText = useCallback(() => {
+    if (fontSize > 1.6) setFontSize(fontSize - 0.2);
+  }, [fontSize]);
+
+  const goToNextHymn = useCallback(() => {
+    push(nextUrl);
+  }, [nextUrl, push]);
+
+  const goToPrevtHymn = useCallback(() => {
+    push(prevUrl);
+  }, [prevUrl, push]);
+
+  /**
+   * Função que gerencia o hino com relação aos favoritos
+   * */
+  const handleFavorite = useCallback(() => {
+    const favoritesData = sessionStorage.getItem('@HarpaCrista:favorites');
+    const favorites = favoritesData ? JSON.parse(favoritesData) : null;
+
+    // Se o hino não está marcado como favorito
+    if (!isFavorited) {
+      const hymnToFavorite = {
+        id: hymn?.id,
+        title: hymn?.title,
+        slug: hymn?.slug,
+        author: hymn?.authors[0].name,
+      };
+
+      // Se não tiver nenhum hino na lista de favoritos
+      if (!favorites) {
+        localStorage.setItem(
+          '@HarpaCrista:favorites',
+          JSON.stringify([hymnToFavorite]),
+        );
+        sessionStorage.setItem(
+          '@HarpaCrista:favorites',
+          JSON.stringify([hymnToFavorite]),
+        );
+      } else {
+        // Adicionar o hino na lista de favoritos existentes
+        const newFavorites = [...favorites, hymnToFavorite];
+        localStorage.setItem(
+          '@HarpaCrista:favorites',
+          JSON.stringify(newFavorites),
+        );
+        sessionStorage.setItem(
+          '@HarpaCrista:favorites',
+          JSON.stringify(newFavorites),
+        );
+      }
+
+      setIsFavorited(!isFavorited);
+    } else {
+      // Senão, remove das listas e desmarca como favorito
+      const newFavorites = favorites.filter((item: FavoriteHymn) => {
+        return item.id !== hymn?.id;
+      });
+
+      localStorage.setItem(
+        '@HarpaCrista:favorites',
+        JSON.stringify(newFavorites),
+      );
+      sessionStorage.setItem(
+        '@HarpaCrista:favorites',
+        JSON.stringify(newFavorites),
+      );
+
+      setIsFavorited(false);
+    }
+  }, [hymn, isFavorited]);
+
+  const handleShare = useCallback(() => {
+    const newVariable: any = window.navigator;
+
+    if (newVariable && newVariable.share) {
+      newVariable
+        .share({
+          title: hymn?.title,
+          text: 'Some text.',
+          url: window.location.pathname,
+        })
+        .then(() => console.log('Successful share'))
+        .catch((error: Error) => console.log('Error sharing', error));
+    }
+  }, [hymn]);
+
   return (
-    <MainLayout
-      menuItem="hinos"
-      metaTitle={`Harpa Cristã | ${titleWithNumber}`}
-    >
-      {!isLoaded && <Loading />}
-      {isLoaded && (
-        <Container>
-          <h1>{titleWithNumber}</h1>
+    <>
+      <MainLayout
+        menuItem="hinos"
+        metaTitle={`Harpa Cristã | ${titleWithNumber}`}
+      >
+        {!isLoaded && <Loading />}
+        {isLoaded && (
+          <Container>
+            <h1>{titleWithNumber}</h1>
 
-          <ResultInfo>
-            {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
-          </ResultInfo>
+            <ResultInfo>
+              {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
+            </ResultInfo>
 
-          <HymnContainer>
-            {prevHymn && (
-              <Link to={prevUrl} className="prevButton">
-                <FiChevronLeft size={30} />
-              </Link>
-            )}
+            <HymnContainer>
+              {prevHymn && (
+                <Link to={prevUrl} className="prevButton">
+                  <FiChevronLeft size={30} />
+                </Link>
+              )}
 
-            {hymn && (
-              <HymnBody dangerouslySetInnerHTML={{ __html: hymn.body }} />
-            )}
+              {hymn && (
+                <HymnBody
+                  style={{ fontSize: `${fontSize}rem` }}
+                  dangerouslySetInnerHTML={{ __html: hymn.body }}
+                  id="hymn-body"
+                />
+              )}
 
-            {nextHymn && (
-              <Link to={nextUrl} className="nextButton">
-                <FiChevronRight size={30} />
-              </Link>
-            )}
-          </HymnContainer>
-          <BackButton />
-        </Container>
-      )}
-    </MainLayout>
+              {nextHymn && (
+                <Link to={nextUrl} className="nextButton">
+                  <FiChevronRight size={30} />
+                </Link>
+              )}
+            </HymnContainer>
+            <BackButton url="/hinos" />
+          </Container>
+        )}
+      </MainLayout>
+      <HymnFooter
+        hymnNumber={hymn?.num_hymn}
+        isFavorited={isFavorited}
+        handleFavorite={handleFavorite}
+        increaseText={increaseText}
+        decreaseText={decreaseText}
+        goToPrevtHymn={goToPrevtHymn}
+        goToNextHymn={goToNextHymn}
+        handleShare={handleShare}
+      />
+    </>
   );
 };
 

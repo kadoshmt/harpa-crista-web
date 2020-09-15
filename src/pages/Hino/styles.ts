@@ -9,6 +9,12 @@ export const Container = styled.div`
     text-align: center;
     color: ${props => props.theme.colors.textSecondary};
   }
+
+  @media (max-width: 425px) {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export const ResultInfo = styled.summary`
@@ -69,6 +75,8 @@ export const HymnContainer = styled.section`
       &.nextButton {
         right: 1rem;
       }
+
+      display: none;
     }
   }
 `;
@@ -111,7 +119,7 @@ export const HymnBody = styled.article`
     margin-top: 1rem;
     p {
       text-align: center;
-      font-size: ${props => props.theme.font.sizes.xl};
+      /* font-size: ${props => props.theme.font.sizes.xl}; */
     }
   }
 `;

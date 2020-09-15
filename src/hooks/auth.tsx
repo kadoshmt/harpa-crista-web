@@ -29,8 +29,8 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@Application:token');
-    const user = localStorage.getItem('@Application:user');
+    const token = localStorage.getItem('@HarpaCrista:token');
+    const user = localStorage.getItem('@HarpaCrista:user');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -48,8 +48,8 @@ export const AuthProvider: React.FC = ({ children }) => {
 
     const { token, user } = response.data;
 
-    localStorage.setItem('@Application:token', token);
-    localStorage.setItem('@Application:user', JSON.stringify(user));
+    localStorage.setItem('@HarpaCrista:token', token);
+    localStorage.setItem('@HarpaCrista:user', JSON.stringify(user));
 
     api.defaults.headers.authorization = `Bearer ${token}`;
 
@@ -57,8 +57,8 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@Application:token');
-    localStorage.removeItem('@Application:user');
+    localStorage.removeItem('@HarpaCrista:token');
+    localStorage.removeItem('@HarpaCrista:user');
     setData({} as AuthState);
   }, []);
 
@@ -69,7 +69,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         user,
       });
 
-      localStorage.setItem('@Application:user', JSON.stringify(user));
+      localStorage.setItem('@HarpaCrista:user', JSON.stringify(user));
     },
     [setData, data.token],
   );
