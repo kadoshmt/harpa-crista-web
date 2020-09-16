@@ -66,8 +66,8 @@ const Favoritos: React.FC = () => {
           <HymnsMenu menuItem="favoritos" />
 
           <ResultInfo>
-            Você marcou como favorito <mark>{hymns && hymns.length} hinos</mark>
-            .
+            Você marcou como favorito{' '}
+            <mark>{(hymns && hymns.length) || 0} hinos</mark>.
           </ResultInfo>
 
           <HymnsContainer>
