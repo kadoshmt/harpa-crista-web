@@ -44,15 +44,43 @@ export const Container = styled.nav`
   @media (max-width: 470px) {
     a {
       padding: 0;
+
+      span {
+        height: 40px;
+        padding: 1rem 1.5rem;
+      }
     }
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 380px) {
+    a {
+      padding: 0;
+
+      &.activeMenu {
+        span {
+          color: ${props => props.theme.colors.primary};
+          border-top: 0;
+        }
+      }
+
+      span {
+        padding: 1rem 1rem;
+        border-left: 1px solid ${props => props.theme.colors.lines};
+        border-top: 1px solid ${props => props.theme.colors.lines};
+
+        &.last-span {
+          border-right: 1px solid ${props => props.theme.colors.lines};
+        }
+      }
+    }
+  }
+
+  @media (max-width: 330px) {
     a {
       padding: 0;
 
       span {
-        height: 80px;
+        padding: 1rem 0.5rem;
       }
     }
   }

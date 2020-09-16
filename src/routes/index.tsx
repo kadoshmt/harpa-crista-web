@@ -11,6 +11,7 @@ import Autores from '../pages/Hinos/Autores';
 import Autor from '../pages/Hinos/Autor';
 import Categorias from '../pages/Hinos/Categorias';
 import Categoria from '../pages/Hinos/Categoria';
+import Favoritos from '../pages/Hinos/Favoritos';
 // import SignIn from '../pages/Signin';
 // import SignUp from '../pages/Signup';
 import Profile from '../pages/Profile';
@@ -25,6 +26,7 @@ const Routes: React.FC = () => (
     <Route path="/hinos/autor/:id" component={Autor} />
     <Route path="/hinos/categorias" component={Categorias} exact />
     <Route path="/hinos/categoria/:id" component={Categoria} />
+    <Route path="/hinos/favoritos" component={Favoritos} exact />
     <Route path="/hinos/:page" component={Hinos} />
     <Route path="/hino/:id" component={Hino} />
     <Route path="/buscar" component={Buscar} />
