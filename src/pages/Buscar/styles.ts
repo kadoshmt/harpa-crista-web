@@ -16,6 +16,7 @@ export const ResultInfo = styled.div`
   mark {
     background: transparent;
     font-weight: bold;
+    color: ${props => props.theme.colors.text};
   }
 
   @media (max-width: 425px) {
