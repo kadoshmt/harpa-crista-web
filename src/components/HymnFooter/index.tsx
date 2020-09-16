@@ -18,7 +18,7 @@ interface Props {
   increaseText: () => void;
   decreaseText: () => void;
   goToNextHymn: () => void;
-  goToPrevtHymn: () => void;
+  goToPrevHymn: () => void;
   handleShare: () => void;
 }
 
@@ -28,7 +28,7 @@ const HymnFooter: React.FC<Props> = ({
   handleFavorite,
   increaseText,
   decreaseText,
-  goToPrevtHymn,
+  goToPrevHymn,
   goToNextHymn,
   handleShare,
 }) => {
@@ -48,7 +48,7 @@ const HymnFooter: React.FC<Props> = ({
         </li>
         <li className="navigation">
           <div>
-            <button type="button" onClick={goToPrevtHymn}>
+            <button type="button" onClick={goToPrevHymn}>
               <BsCaretLeftFill size={20} />
             </button>
             <span>{hymnNumber} de 640</span>

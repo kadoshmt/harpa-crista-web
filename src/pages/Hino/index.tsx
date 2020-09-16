@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useSwipeable, Swipeable } from 'react-swipeable';
 import { Container, ResultInfo, HymnContainer, HymnBody } from './styles';
 import api from '../../services/api';
 
@@ -42,6 +43,11 @@ const Hino: React.FC = () => {
   const { id } = useParams();
 
   const { push } = useHistory();
+
+  const swipeaOptions = {
+    delta: 100,
+    // preventDefaultTouchmoveEvent: false,
+  };
 
   useEffect(() => {
     api.get(`/hymns/${id}`).then(response => {
@@ -105,7 +111,7 @@ const Hino: React.FC = () => {
     push(nextUrl);
   }, [nextUrl, push]);
 
-  const goToPrevtHymn = useCallback(() => {
+  const goToPrevHymn = useCallback(() => {
     push(prevUrl);
   }, [prevUrl, push]);
 
@@ -192,34 +198,41 @@ const Hino: React.FC = () => {
         {!isLoaded && <Loading />}
         {isLoaded && (
           <Container>
-            <h1>{titleWithNumber}</h1>
+            <Swipeable
+              onSwipedLeft={() => goToNextHymn()}
+              onSwipedRight={() => goToPrevHymn()}
+              {...swipeaOptions}
+            >
+              <h1>{titleWithNumber}</h1>
 
-            <ResultInfo>
-              {hymn && hymn.authors.flatMap(author => author.name).join(' / ')}
-            </ResultInfo>
+              <ResultInfo>
+                {hymn &&
+                  hymn.authors.flatMap(author => author.name).join(' / ')}
+              </ResultInfo>
 
-            <HymnContainer>
-              {prevHymn && (
-                <Link to={prevUrl} className="prevButton">
-                  <FiChevronLeft size={30} />
-                </Link>
-              )}
+              <HymnContainer>
+                {prevHymn && (
+                  <Link to={prevUrl} className="prevButton">
+                    <FiChevronLeft size={30} />
+                  </Link>
+                )}
 
-              {hymn && (
-                <HymnBody
-                  style={{ fontSize: `${fontSize}rem` }}
-                  dangerouslySetInnerHTML={{ __html: hymn.body }}
-                  id="hymn-body"
-                />
-              )}
+                {hymn && (
+                  <HymnBody
+                    style={{ fontSize: `${fontSize}rem` }}
+                    dangerouslySetInnerHTML={{ __html: hymn.body }}
+                    id="hymn-body"
+                  />
+                )}
 
-              {nextHymn && (
-                <Link to={nextUrl} className="nextButton">
-                  <FiChevronRight size={30} />
-                </Link>
-              )}
-            </HymnContainer>
-            <BackButton url="/hinos" />
+                {nextHymn && (
+                  <Link to={nextUrl} className="nextButton">
+                    <FiChevronRight size={30} />
+                  </Link>
+                )}
+              </HymnContainer>
+              <BackButton url="/hinos" />
+            </Swipeable>
           </Container>
         )}
       </MainLayout>
@@ -229,7 +242,7 @@ const Hino: React.FC = () => {
         handleFavorite={handleFavorite}
         increaseText={increaseText}
         decreaseText={decreaseText}
-        goToPrevtHymn={goToPrevtHymn}
+        goToPrevHymn={goToPrevHymn}
         goToNextHymn={goToNextHymn}
         handleShare={handleShare}
       />
